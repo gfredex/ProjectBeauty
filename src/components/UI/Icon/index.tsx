@@ -5,7 +5,7 @@ type IconProps = {
     color?: string
 }
 
-const Icon = ({ name, size = 24, className, color = 'currentColor' }: IconProps) => (
+const Icon = ({ name, size, className, color = 'currentColor' }: IconProps) => (
     <svg className={className} width={size} height={size} color={color}>
         <use href={`#icon-${name}`} />
     </svg>
