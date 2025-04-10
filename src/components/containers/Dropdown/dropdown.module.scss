@@ -1,0 +1,35 @@
+.dropMenuWrap {
+  position: relative;
+}
+
+.dropMenuBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  color: #c2188b;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dropMenuList {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ /* list-style: none;
+  padding: 0;
+  margin: 0;*/
+  width: 150px;
+  z-index: 1;
+}
+
+.dropMenuItem {
+  padding: 10px 16px;
+  cursor: pointer;
+  color: #c2188b;
+}

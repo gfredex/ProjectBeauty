@@ -1,4 +1,4 @@
-import { Logo } from '../Logo';
+import { Logo, Dropdown } from '../../../components';
 import styles from './header.module.scss';
 
 const Header = () => {
@@ -7,6 +7,7 @@ const Header = () => {
         <>
             <div className={styles.headerWrapp}>
                 <Logo/>
+                <Dropdown/>
             </div>
         </>
     );
