@@ -1,14 +1,15 @@
 type IconProps = {
-    name: string
-    size?: number
-    className?: string
-    color?: string
-}
+    name: string;
+    className?: string;
+    size?: number;
+    color?: string;
+    stroke?: string;
+};
 
-const Icon = ({ name, size, className, color = 'currentColor' }: IconProps) => (
-    <svg className={className} width={size} height={size} color={color}>
+const Icon = ({ name, className, size, color = 'currentColor', stroke }: IconProps) => (
+    <svg className={className} width={size} height={size} color={color} stroke={stroke}>
         <use href={`#icon-${name}`} />
     </svg>
-)
+);
 
 export { Icon };

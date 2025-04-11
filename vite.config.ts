@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import path from 'path'
+import react from '@vitejs/plugin-react';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import path from 'path';
 
 export default defineConfig({
     base: './', // Базовый путь для проекта при его развертывании

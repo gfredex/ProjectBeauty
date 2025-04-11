@@ -1,4 +1,128 @@
 /*COLORS*/
-$color-pink: #FFF2F1 !default;
+$color-white: #fff !default;
+$color-gray: #ddd !default;
+$color-pink: #fff2f1 !default;
+$color-pink2: #fde2ee !default;
+$color-purple: #aa01a2 !default;
+$color-purple2: #c2188b !default;
+$color-purple3: #7F207B  !default;
 
 $secondary-color: $color-pink !default;
+
+/*FONTS*/
+$manroupe-font: Manroupe, sans-serif !default;
+
+/*FONT WEIGHTS*/
+$font-weight-400: 400 !default;
+
+/*FONT SIZES*/
+$font-size-16: 16px !default;
+
+/*LINE HEIGHTS*/
+$line-height-44: 44px !default;
+
+/*Z-INDEXES*/
+$z-index-1: 1 !default;
+
+/*SPACINGS*/   /*неиспользуемые spacing будут удалятся при  рефакторинге*/
+$spacing-0: 0 !default;
+$spacing-1: 1px !default;
+$spacing-2: 2px !default;
+$spacing-3: 3px !default;
+$spacing-4: 4px !default;
+$spacing-5: 5px !default;
+$spacing-6: 6px !default;
+$spacing-7: 7px !default;
+$spacing-8: 8px !default;
+$spacing-9: 9px !default;
+$spacing-10: 10px !default;
+$spacing-11: 11px !default;
+$spacing-12: 12px !default;
+$spacing-13: 13px !default;
+$spacing-14: 14px !default;
+$spacing-15: 15px !default;
+$spacing-16: 16px !default;
+$spacing-17: 17px !default;
+$spacing-18: 18px !default;
+$spacing-19: 19px !default;
+$spacing-20: 20px !default;
+$spacing-21: 21px !default;
+$spacing-22: 22px !default;
+$spacing-23: 23px !default;
+$spacing-24: 24px !default;
+$spacing-25: 25px !default;
+$spacing-26: 26px !default;
+$spacing-27: 27px !default;
+$spacing-28: 28px !default;
+$spacing-29: 29px !default;
+$spacing-30: 30px !default;
+$spacing-31: 31px !default;
+$spacing-32: 32px !default;
+$spacing-33: 33px !default;
+$spacing-34: 34px !default;
+$spacing-35: 35px !default;
+$spacing-36: 36px !default;
+$spacing-37: 37px !default;
+$spacing-38: 38px !default;
+$spacing-39: 39px !default;
+$spacing-40: 40px !default;
+$spacing-41: 41px !default;
+$spacing-42: 42px !default;
+$spacing-43: 43px !default;
+$spacing-44: 44px !default;
+$spacing-45: 45px !default;
+$spacing-46: 46px !default;
+$spacing-47: 47px !default;
+$spacing-48: 48px !default;
+$spacing-49: 49px !default;
+$spacing-50: 50px !default;
+$spacing-51: 51px !default;
+$spacing-52: 52px !default;
+$spacing-53: 53px !default;
+$spacing-54: 54px !default;
+$spacing-55: 55px !default;
+$spacing-56: 56px !default;
+$spacing-57: 57px !default;
+$spacing-58: 58px !default;
+$spacing-59: 59px !default;
+$spacing-60: 60px !default;
+$spacing-61: 61px !default;
+$spacing-62: 62px !default;
+$spacing-63: 63px !default;
+$spacing-64: 64px !default;
+$spacing-65: 65px !default;
+$spacing-66: 66px !default;
+$spacing-67: 67px !default;
+$spacing-68: 68px !default;
+$spacing-69: 69px !default;
+$spacing-70: 70px !default;
+$spacing-71: 71px !default;
+$spacing-72: 72px !default;
+$spacing-73: 73px !default;
+$spacing-74: 74px !default;
+$spacing-75: 75px !default;
+$spacing-76: 76px !default;
+$spacing-77: 77px !default;
+$spacing-78: 78px !default;
+$spacing-79: 79px !default;
+$spacing-80: 80px !default;
+$spacing-81: 81px !default;
+$spacing-82: 82px !default;
+$spacing-83: 83px !default;
+$spacing-84: 84px !default;
+$spacing-85: 85px !default;
+$spacing-86: 86px !default;
+$spacing-87: 87px !default;
+$spacing-88: 88px !default;
+$spacing-89: 89px !default;
+$spacing-90: 90px !default;
+$spacing-91: 91px !default;
+$spacing-92: 92px !default;
+$spacing-93: 93px !default;
+$spacing-94: 94px !default;
+$spacing-95: 95px !default;
+$spacing-96: 96px !default;
+$spacing-97: 97px !default;
+$spacing-98: 98px !default;
+$spacing-99: 99px !default;
+$spacing-100: 100px !default;

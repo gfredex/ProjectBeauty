@@ -1,35 +1,41 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
 .dropMenuWrap {
-  position: relative;
+    position: relative;
+    padding-top: $spacing-11;
+    padding-right: $spacing-35;
 }
 
 .dropMenuBtn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 20px;
-  color: #c2188b;
-  background: none;
-  border: none;
-  cursor: pointer;
+    @include rowing(null, center);
+    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-purple);
+    gap: $spacing-25;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .dropMenuList {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
- /* list-style: none;
-  padding: 0;
-  margin: 0;*/
-  width: 150px;
-  z-index: 1;
+    position: absolute;
+    top: $spacing-40;
+    left: $spacing-0;
+    background: $color-white;
+    border: $spacing-1 solid $color-gray;
+    border-radius: $spacing-4;
+    box-shadow: $spacing-0 $spacing-4 $spacing-8 rgba(0, 0, 0, 0.1);
+    width: 150px;
+    z-index: $z-index-1;
 }
 
 .dropMenuItem {
-  padding: 10px 16px;
-  cursor: pointer;
-  color: #c2188b;
+    padding: $spacing-10 $spacing-16;
+    cursor: pointer;
+    color: $color-purple2;
+    background: transparent;
+    transition: background 0.2s;
+
+    &:hover {
+        background: $color-pink2;
+    }
 }

@@ -1,5 +1,11 @@
+@use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
 .headerWrapp {
-  @include rowing();
+    @include rowing(space-between, center);
+    min-height: $spacing-70;
+}
+
+.navbarMenu {
+    @include rowing();
 }

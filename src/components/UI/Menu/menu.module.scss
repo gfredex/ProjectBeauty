@@ -1,0 +1,19 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.nav {
+  @include rowing(center);
+  gap: $spacing-35;
+  padding-top: $spacing-15;
+}
+
+.navLink {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-purple);
+  padding: $spacing-0 $spacing-10 $spacing-10;
+  transition: color 0.3s ease;
+}
+
+.navLink.active {
+  @include fonts(null, null, null, $color-purple3);
+  border-bottom: $spacing-3 solid $color-purple3;
+}

@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styles from './dropdown.module.scss'
+import { Icon } from '../../UI/Icon';
+import styles from './dropdown.module.scss';
 
-interface MenuItem {
+type MenuItem = {
     label: string;
     onClick: () => void;
-}
+};
 
 const menuItems: MenuItem[] = [
     { label: 'Пункт 1', onClick: () => alert('Пункт 1') },
@@ -30,19 +31,9 @@ const Dropdown = () => {
 
     return (
         <div ref={menuRef} className={styles.dropMenuWrap}>
-            <button
-                onClick={() => setOpen(prev => !prev)}
-                className={styles.dropMenuBtn}
-            >
+            <button onClick={() => setOpen((prev) => !prev)} className={styles.dropMenuBtn}>
                 Меню
-                <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                >
-                    <path d="M5 7l5 5 5-5H5z" />
-                </svg>
+                <Icon name="PurpleArrowDown" size={16} color={'transparent'} stroke={'#AA01A2'} />
             </button>
 
             {open && (
@@ -55,8 +46,6 @@ const Dropdown = () => {
                                 item.onClick();
                                 setOpen(false);
                             }}
-                            onMouseEnter={e => (e.currentTarget.style.background = '#fde2ee')}
-                            onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                         >
                             {item.label}
                         </li>
