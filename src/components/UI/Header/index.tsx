@@ -1,19 +1,7 @@
-import { Logo, Dropdown, Menu, LinkButton } from '../../../components';
-import styles from './header.module.scss';
+import {PropsWithChildren} from "react";
 
-const Header = () => {
-    return (
-        <>
-            <div className={styles.headerWrapp}>
-                <Logo/>
-                <p className={styles.navbarMenu}>
-                    <Dropdown/>
-                    <Menu/>
-                </p>
-                <LinkButton to='#'>Вход</LinkButton>
-            </div>
-        </>
-    );
+const Header = ({ children }: PropsWithChildren<object>) => {
+    return ( <> { children } </> );
 };
 
 export { Header };

@@ -4,4 +4,6 @@ export * from './UI/Logo';
 export * from './UI/Menu';
 export * from './UI/LinkButton';
 export * from './UI/Main';
+export * from './UI/Banner';
+export * from './UI/Button';
 export * from './containers/Dropdown';

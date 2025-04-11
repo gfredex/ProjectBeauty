@@ -1,3 +1,22 @@
-.hero {
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
+.headerWrapp {
+  @include rowing(space-between, center);
+  min-height: $spacing-70;
+}
+
+.navbarMenu {
+  @include rowing();
+}
+
+.hero {
+  @include sizes(100%);
+  aspect-ratio: 1920 / 815;
+  background: {
+    image: url('/images/manicure-process.png');
+    size: cover;
+    position: center;
+    repeat: no-repeat;
+  }
 }

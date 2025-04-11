@@ -1,0 +1,5 @@
+@use '../styles/mixins' as *;
+
+._h-100 {
+  @include sizes(null, 100%);
+}

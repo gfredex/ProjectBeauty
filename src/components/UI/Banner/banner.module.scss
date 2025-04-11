@@ -1,0 +1,26 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.banner {
+  @include rowing(null, center, column);
+  @include sizes(null, 100%);
+}
+
+.title {
+  @include fonts($playfair-font, $font-weight-800, $font-size-90);
+  background: linear-gradient(90deg, $color-purple 0%, $color-pink 0.01%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-42, $color-white);
+  text-align: center;
+  max-width: 1200px;
+}
+
+.description {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-42, $color-pink3);
+}
