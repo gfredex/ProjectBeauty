@@ -15,8 +15,8 @@ const Banner: React.FC<BannerProps> = ( { title, subtitle, description }) => {
             <p className={styles.subtitle}>{subtitle}</p>
             <p className={styles.description}>{description}</p>
             <div className={styles.bannerActions}>
-                <Button className="btn btn--white">Мастерам</Button>
-                <Button className="btn btn--purple">Клиентам</Button>
+                <Button className='masters'>Мастерам</Button>
+                <Button className='clients'>Клиентам</Button>
             </div>
         </div>
     );

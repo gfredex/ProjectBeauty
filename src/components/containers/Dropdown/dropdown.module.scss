@@ -39,3 +39,7 @@
         background: $color-pink2;
     }
 }
+
+.searchPanelBtn {
+    @include fonts($roboto-font, $font-weight-500, null, $color-gray2);
+}

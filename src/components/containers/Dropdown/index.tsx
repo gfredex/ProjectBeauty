@@ -2,19 +2,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Icon } from '../../UI/Icon';
 import styles from './dropdown.module.scss';
 
-type MenuItem = {
-    label: string;
-    onClick: () => void;
+type ClassNames = {
+    wrapper?: string;
+    button?: string;
+    list?: string;
+    item?: string;
 };
 
-const menuItems: MenuItem[] = [
-    { label: 'Пункт 1', onClick: () => alert('Пункт 1') },
-    { label: 'Пункт 2', onClick: () => alert('Пункт 2') },
-    { label: 'Пункт 3', onClick: () => alert('Пункт 3') },
-    { label: 'Пункт 4', onClick: () => alert('Пункт 4') },
-];
+type DropdownProps = {
+    items: string[];
+    buttonLabel: string;
+    onItemClick?: (label: string) => void;
+    classNames?: ClassNames;
+};
 
-const Dropdown = () => {
+const Dropdown: React.FC<DropdownProps> = ({ items, buttonLabel, onItemClick, classNames = {} }) => {
     const [open, setOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -29,25 +31,34 @@ const Dropdown = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const handleItemClick = (label: string) => {
+        onItemClick?.(label);
+        setOpen(false);
+    };
+
+    const cn = (base: string, custom?: string) =>
+        `${styles[base]}${custom ? ` ${styles[custom]}` : ''}`;
+
     return (
-        <div ref={menuRef} className={styles.dropMenuWrap}>
-            <button onClick={() => setOpen((prev) => !prev)} className={styles.dropMenuBtn}>
-                Меню
-                <Icon name="PurpleArrowDown" size={16} color={'transparent'} stroke={'#AA01A2'} />
+        <div ref={menuRef} className={cn('dropMenuWrap', classNames.wrapper)}>
+            <button
+                type="button"
+                onClick={() => setOpen(prev => !prev)}
+                className={cn('dropMenuBtn', classNames.button)}
+            >
+                {buttonLabel}
+                <Icon name="PurpleArrowDown" size={16} color="transparent" stroke="#AA01A2" />
             </button>
 
             {open && (
-                <ul className={styles.dropMenuList}>
-                    {menuItems.map((item, index) => (
+                <ul className={cn('dropMenuList', classNames.list)}>
+                    {items.map((label, index) => (
                         <li
-                            className={styles.dropMenuItem}
                             key={index}
-                            onClick={() => {
-                                item.onClick();
-                                setOpen(false);
-                            }}
+                            className={cn('dropMenuItem', classNames.item)}
+                            onClick={() => handleItemClick(label)}
                         >
-                            {item.label}
+                            {label}
                         </li>
                     ))}
                 </ul>

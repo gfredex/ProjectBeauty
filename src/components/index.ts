@@ -6,4 +6,6 @@ export * from './UI/LinkButton';
 export * from './UI/Main';
 export * from './UI/Banner';
 export * from './UI/Button';
+export * from './UI/SearchPanel';
+export * from './UI/SearchForm';
 export * from './containers/Dropdown';

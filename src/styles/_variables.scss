@@ -1,6 +1,8 @@
 /*COLORS*/
 $color-white: #fff !default;
+$color-black: #000 !default;
 $color-gray: #ddd !default;
+$color-gray2: #7D7979 !default;
 $color-pink: #fff2f1 !default;
 $color-pink2: #fde2ee !default;
 $color-pink3: #F8E4F7 !default;
@@ -13,8 +15,10 @@ $secondary-color: $color-pink !default;
 /*FONTS*/
 $manroupe-font: Manroupe, sans-serif !default;
 $playfair-font: Playfair Display, sans-serif !default;
+$roboto-font: Roboto, sans-serif !default;
 
 /*FONT WEIGHTS*/
+$font-weight-300: 300 !default;
 $font-weight-400: 400 !default;
 $font-weight-500: 500 !default;
 $font-weight-600: 600 !default;
@@ -22,8 +26,10 @@ $font-weight-800: 800 !default;
 
 /*FONT SIZES*/
 $font-size-16: 16px !default;
-$font-size-42: 42px !default;
-$font-size-90: 90px !default;
+$font-size-26: 26px !default;
+$font-size-36: 36px !default;
+$font-size-30: 30px !default;
+$font-size-53: 53px !default;
 
 /*LINE HEIGHTS*/
 $line-height-44: 44px !default;

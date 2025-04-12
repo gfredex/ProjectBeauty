@@ -1,0 +1,20 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.btn {  //для общих  стилей
+  padding: $spacing-15 $spacing-80;
+  border-radius: $spacing-12;
+  border: none;
+}
+
+.btn.masters {
+  @include fonts($manroupe-font, $font-weight-300, $font-size-26, $color-black);
+  margin-right: $spacing-50;
+  background-color: $color-white;
+}
+
+.btn.clients {
+  @include fonts($manroupe-font, $font-weight-300, $font-size-26, $color-white);
+  margin-left: $spacing-50;
+  background-color: $color-purple3;
+}
