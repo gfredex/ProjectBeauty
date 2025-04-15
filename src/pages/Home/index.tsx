@@ -54,6 +54,43 @@ function Home() {
                             name={'Маргарита Чернышова'}
                             specialty={'мастер маникюра '}
                             address={'г. Минск, ул. Центральная, 54'}
+                            rating={5.0}
+                            reviewsCount={4}
+                        />
+                        <MasterCard
+                            name={'Маргарита Чернышова'}
+                            specialty={'мастер маникюра '}
+                            address={'г. Минск, ул. Центральная, 54'}
+                            rating={5.0}
+                            reviewsCount={4}
+                        />
+                        <MasterCard
+                            name={'Маргарита Чернышова'}
+                            specialty={'мастер маникюра '}
+                            address={'г. Минск, ул. Центральная, 54'}
+                            rating={5.0}
+                            reviewsCount={4}
+                        />
+                        <MasterCard
+                            name={'Маргарита Чернышова'}
+                            specialty={'мастер маникюра '}
+                            address={'г. Минск, ул. Центральная, 54'}
+                            rating={5.0}
+                            reviewsCount={4}
+                        />
+                        <MasterCard
+                            name={'Маргарита Чернышова'}
+                            specialty={'мастер маникюра '}
+                            address={'г. Минск, ул. Центральная, 54'}
+                            rating={5.0}
+                            reviewsCount={4}
+                        />
+                        <MasterCard
+                            name={'Маргарита Чернышова'}
+                            specialty={'мастер маникюра '}
+                            address={'г. Минск, ул. Центральная, 54'}
+                            rating={5.0}
+                            reviewsCount={4}
                         />
                     </p>
                 </div>

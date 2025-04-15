@@ -26,7 +26,9 @@
 
 .wrappCards {
     @include rowing();
+    flex-wrap: wrap;
     gap: $spacing-25;
-    padding: $spacing-40 $spacing-60;
+    padding: $spacing-40 $spacing-57;
+    border-radius: $spacing-24;
     background-color: $color-pink;
 }
