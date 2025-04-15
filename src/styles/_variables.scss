@@ -5,19 +5,22 @@ $color-gray: #ddd !default;
 $color-gray2: #7D7979 !default;
 $color-pink: #fff2f1 !default;
 $color-pink2: #fde2ee !default;
-$color-pink3: #F8E4F7 !default;
+$color-pink3: #f8e4f7 !default;
 $color-purple: #aa01a2 !default;
 $color-purple2: #c2188b !default;
-$color-purple3: #7F207B  !default;
+$color-purple3: #7f207b !default;
+$color-purple4: #8F3574 !default;
+$color-burgundy: #422A3C !default;
 
 $secondary-color: $color-pink !default;
 
 /*FONTS*/
 $manroupe-font: Manroupe, sans-serif !default;
-$playfair-font: Playfair Display, sans-serif !default;
+$playfair-font: Playfair, sans-serif !default;
 $roboto-font: Roboto, sans-serif !default;
 
 /*FONT WEIGHTS*/
+$font-weight-200: 200 !default;
 $font-weight-300: 300 !default;
 $font-weight-400: 400 !default;
 $font-weight-500: 500 !default;
@@ -25,11 +28,20 @@ $font-weight-600: 600 !default;
 $font-weight-800: 800 !default;
 
 /*FONT SIZES*/
+$font-size-14: 14px !default;
 $font-size-16: 16px !default;
+$font-size-18: 18px !default;
+$font-size-20: 20px !default;
 $font-size-26: 26px !default;
+$font-size-28: 28px !default;
+$font-size-29: 29px !default;
+$font-size-32: 32px !default;
+$font-size-34: 34px !default;
 $font-size-36: 36px !default;
 $font-size-30: 30px !default;
-$font-size-53: 53px !default;
+$font-size-40: 40px !default;
+$font-size-42: 42px !default;
+$font-size-90: 90px !default;
 
 /*LINE HEIGHTS*/
 $line-height-44: 44px !default;
@@ -37,7 +49,7 @@ $line-height-44: 44px !default;
 /*Z-INDEXES*/
 $z-index-1: 1 !default;
 
-/*SPACINGS*/   /*неиспользуемые spacing будут удалятся при  рефакторинге*/
+/*SPACINGS*/ /*неиспользуемые spacing будут удалятся при  рефакторинге*/
 $spacing-0: 0 !default;
 $spacing-1: 1px !default;
 $spacing-2: 2px !default;

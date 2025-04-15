@@ -1,23 +1,26 @@
 import React from 'react';
+import { cn } from '../../../utils/cn';
 import styles from './button.module.scss';
+
+type ClassNames = {
+    buttonClass?: string;
+};
 
 type ButtonProps = {
     children: React.ReactNode;
     onClick?: () => void;
     type?: 'button' | 'submit' | 'reset';
     disabled?: boolean;
-    className?: keyof typeof styles;
+    classNames?: ClassNames;
 };
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, type = 'button', disabled = false, className }) => {
-    const buttonClass = styles[className ?? ''];
-
+const Button: React.FC<ButtonProps> = ({ children, onClick, type = 'button', disabled = false, classNames = {} }) => {
     return (
         <button
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`${styles.btn} ${buttonClass}`}
+            className={cn(styles, 'btn', classNames.buttonClass) }
         >
             {children}
         </button>

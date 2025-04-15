@@ -2,21 +2,31 @@
 @use '../../styles/mixins' as *;
 
 .headerWrapp {
-  @include rowing(space-between, center);
-  min-height: $spacing-70;
+    @include rowing(space-between, center);
+    min-height: $spacing-70;
 }
 
 .navbarMenu {
-  @include rowing();
+    @include rowing();
 }
 
 .hero {
-  @include sizes(100%);
-  aspect-ratio: 1920 / 815;
-  background: {
-    image: url('/images/manicure-process.png');
-    size: cover;
-    position: center;
-    repeat: no-repeat;
-  }
+    @include sizes(100%, 815px);
+    background: {
+        image: url('/images/manicure-process.png');
+        size: cover;
+        position: center;
+        repeat: no-repeat;
+    }
+}
+
+.wrappToolbar {
+    padding: 110px 0 15px;
+}
+
+.wrappCards {
+    @include rowing();
+    gap: $spacing-25;
+    padding: $spacing-40 $spacing-60;
+    background-color: $color-pink;
 }

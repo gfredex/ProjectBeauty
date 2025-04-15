@@ -8,4 +8,8 @@ export * from './UI/Banner';
 export * from './UI/Button';
 export * from './UI/SearchPanel';
 export * from './UI/SearchForm';
+export * from './UI/MastersToolbar';
+export * from './UI/MasterCard';
+export * from './UI/Picture';
+export * from './UI/SvgIcon';
 export * from './containers/Dropdown';

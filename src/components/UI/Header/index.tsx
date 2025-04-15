@@ -1,7 +1,7 @@
-import {PropsWithChildren} from "react";
+import { PropsWithChildren } from 'react';
 
 const Header = ({ children }: PropsWithChildren<object>) => {
-    return ( <> { children } </> );
+    return <> {children} </>;
 };
 
 export { Header };

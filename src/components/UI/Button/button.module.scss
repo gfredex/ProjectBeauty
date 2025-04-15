@@ -1,20 +1,52 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-.btn {  //для общих  стилей
-  padding: $spacing-15 $spacing-80;
+.btn {
+  padding: $spacing-15 $spacing-90;
   border-radius: $spacing-12;
   border: none;
 }
 
-.btn.masters {
-  @include fonts($manroupe-font, $font-weight-300, $font-size-26, $color-black);
-  margin-right: $spacing-50;
+.masters {
+  @include fonts($manroupe-font, $font-weight-300, $font-size-36, $color-black);
+  margin-right: $spacing-75;
   background-color: $color-white;
 }
 
-.btn.clients {
-  @include fonts($manroupe-font, $font-weight-300, $font-size-26, $color-white);
-  margin-left: $spacing-50;
+.clients {
+  @include fonts($manroupe-font, $font-weight-300, $font-size-36, $color-white);
+  margin-left: $spacing-75;
   background-color: $color-purple3;
+}
+
+.searchBtn {
+  @include rowing(null, center);
+  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-white);
+  margin-right: $spacing-25;
+  padding: $spacing-10 $spacing-25;
+  border-radius: $spacing-10;
+  background-color: $color-purple3;
+
+  > span {
+    padding-right: $spacing-10;
+  }
+}
+
+.listBtn {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-white);
+  padding: $spacing-10 $spacing-25;
+  border-radius: $spacing-10;
+  background-color: $color-purple3;
+}
+
+.mapBtn {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-burgundy);
+  padding: $spacing-10 $spacing-25;
+  border: 1px solid $color-purple4;
+  border-radius: $spacing-10;
+  background-color: $color-white;
+}
+
+.listBtn, .mapBtn {
+  margin-left: $spacing-55;
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './linkButton.module.scss'
+import styles from './linkButton.module.scss';
 
 type LinkProps = {
     to: string;
     children: React.ReactNode;
     className?: string;
-}
+};
 
 const LinkButton: React.FC<LinkProps> = ({ to, children, className = '' }) => {
     return (
@@ -14,6 +14,6 @@ const LinkButton: React.FC<LinkProps> = ({ to, children, className = '' }) => {
             {children}
         </Link>
     );
-}
+};
 
 export { LinkButton };

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Icon } from '../../UI/Icon';
+import { cn } from '../../../utils/cn';
 import styles from './dropdown.module.scss';
 
 type ClassNames = {
@@ -14,9 +15,14 @@ type DropdownProps = {
     buttonLabel: string;
     onItemClick?: (label: string) => void;
     classNames?: ClassNames;
+    iconName?: string;
+    iconStroke?: string;
+    iconColor?: string;
+    iconSize?: number;
 };
 
-const Dropdown: React.FC<DropdownProps> = ({ items, buttonLabel, onItemClick, classNames = {} }) => {
+const Dropdown: React.FC<DropdownProps> = ({items, buttonLabel,
+                       onItemClick, iconStroke, iconSize, iconName, iconColor, classNames = {} }) => {
     const [open, setOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -36,26 +42,27 @@ const Dropdown: React.FC<DropdownProps> = ({ items, buttonLabel, onItemClick, cl
         setOpen(false);
     };
 
-    const cn = (base: string, custom?: string) =>
-        `${styles[base]}${custom ? ` ${styles[custom]}` : ''}`;
-
     return (
-        <div ref={menuRef} className={cn('dropMenuWrap', classNames.wrapper)}>
+        <div ref={menuRef} className={cn(styles, 'dropMenuWrap', classNames.wrapper)}>
             <button
-                type="button"
+                type='button'
                 onClick={() => setOpen(prev => !prev)}
-                className={cn('dropMenuBtn', classNames.button)}
+                className={cn(styles, 'dropMenuBtn', classNames.button)}
             >
-                {buttonLabel}
-                <Icon name="PurpleArrowDown" size={16} color="transparent" stroke="#AA01A2" />
+                <span>{buttonLabel}</span>
+                <Icon
+                    name={iconName}
+                    size={iconSize}
+                    color={iconColor}
+                    stroke={iconStroke} />
             </button>
 
             {open && (
-                <ul className={cn('dropMenuList', classNames.list)}>
+                <ul className={cn(styles, 'dropMenuList', classNames.list)}>
                     {items.map((label, index) => (
                         <li
                             key={index}
-                            className={cn('dropMenuItem', classNames.item)}
+                            className={cn(styles, 'dropMenuItem', classNames.item)}
                             onClick={() => handleItemClick(label)}
                         >
                             {label}

@@ -1,0 +1,26 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  @include sizes(100%);
+  max-width: 650px;
+  padding: $spacing-24;
+  border-radius: $spacing-10;
+  background-color: $color-white;
+}
+
+.header {
+  @include rowing();
+}
+
+.info {
+  padding-left: $spacing-12;
+}
+
+.name {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-32, $color-black);
+}
+
+.specialty, .address {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-purple4);
+}

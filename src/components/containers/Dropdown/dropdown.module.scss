@@ -40,6 +40,35 @@
     }
 }
 
+.searchWrap {
+    display: inline-block;
+    padding: $spacing-0 $spacing-0 $spacing-0 $spacing-25;
+    border-right: 2px solid $color-gray2;
+}
+
 .searchPanelBtn {
-    @include fonts($roboto-font, $font-weight-500, null, $color-gray2);
+    @include fonts($roboto-font, $font-weight-500, $font-size-20, $color-gray2);
+    gap: $spacing-5;
+    min-width: 150px;
+    padding-right: $spacing-25;
+
+    > span {
+        padding-right: $spacing-20;
+    }
+}
+
+.lastItemWrap {
+    padding: $spacing-5 $spacing-0 $spacing-5 $spacing-20;
+}
+
+.sortBtn {
+    @include fonts(null, null, $font-size-20, $color-purple3);
+
+    > svg {
+        margin-bottom: $spacing-2;
+    }
+}
+
+.toolbarWrapp {
+    margin-right: $spacing-55;
 }

@@ -9,7 +9,7 @@ type SearchPanelProps = {
 const SearchPanel: React.FC<SearchPanelProps> = ({ title }) => {
     return (
         <section className={styles.searchPanel}>
-            <h1>{ title }</h1>
+            <h1 className={styles.searchTitle}>{ title }</h1>
             <SearchForm/>
         </section>
     );
