@@ -58,3 +58,27 @@
   border-radius: $spacing-10;
   background-color: $color-purple3;
 }
+
+.mastersMoreBtn {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-white);
+  padding: $spacing-20 $spacing-30;
+  margin: $spacing-24 $spacing-0 $spacing-12;
+  border-radius: $spacing-10;
+  background-color: $color-purple3;
+}
+
+.discountBtn {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-white);
+  padding: $spacing-12 $spacing-20;
+  border-radius: $spacing-10;
+  background-color: $color-purple3;
+}
+
+.joinServBtn {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-24, $color-white);
+  align-self: self-start;
+  padding: $spacing-24 $spacing-36;
+  margin: $spacing-12 $spacing-0 $spacing-12;
+  border-radius: $spacing-10;
+  background-color: $color-purple3;
+}

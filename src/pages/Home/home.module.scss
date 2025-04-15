@@ -32,3 +32,7 @@
     border-radius: $spacing-24;
     background-color: $color-pink;
 }
+
+.mastersMoreWrap {
+    @include rowing(center);
+}

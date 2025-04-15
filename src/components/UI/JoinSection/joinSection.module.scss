@@ -1,0 +1,26 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.joinSection {
+  @include rowing(space-between, center);
+  min-height: 500px;
+}
+
+.content {
+  @include rowing(null, null, column);
+  padding: $spacing-0 $spacing-30;
+}
+
+.title {
+  @include fonts($playfair-font, $font-weight-700, $font-size-40, $color-purple4);
+  padding-bottom: $spacing-36;
+}
+
+.subtext {
+  padding-top: $spacing-40;
+  padding-bottom: $spacing-15;
+}
+
+.text, .subtext {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-24, $color-black2, 1.3);
+}

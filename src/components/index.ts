@@ -12,4 +12,7 @@ export * from './UI/MastersToolbar';
 export * from './UI/MasterCard';
 export * from './UI/Picture';
 export * from './UI/SvgIcon';
+export * from './UI/DiscountCard';
+export * from './UI/Slider';
+export * from './UI/JoinSection';
 export * from './containers/Dropdown';
