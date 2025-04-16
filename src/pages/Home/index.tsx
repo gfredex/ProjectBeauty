@@ -9,7 +9,7 @@ import {
     SearchPanel,
     MastersToolbar,
     MasterCard,
-    Button, Slider, JoinSection
+    Button, Slider, JoinSection, HelpSection
 } from '../../components';
 import React from 'react';
 import styles from './home.module.scss';
@@ -121,6 +121,11 @@ function Home() {
                 <div className={'bg-white'}>
                     <div className={'container'}>
                         <JoinSection/>
+                    </div>
+                </div>
+                <div className={'bg-purple'}>
+                    <div className={'container'}>
+                        <HelpSection/>
                     </div>
                 </div>
             </Main>

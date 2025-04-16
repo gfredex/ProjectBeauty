@@ -15,4 +15,5 @@ export * from './UI/SvgIcon';
 export * from './UI/DiscountCard';
 export * from './UI/Slider';
 export * from './UI/JoinSection';
+export * from './UI/HelpSection';
 export * from './containers/Dropdown';
