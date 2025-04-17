@@ -1,4 +1,10 @@
 @use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+
+.supportEmail {
+  @include fonts($roboto-font, $font-weight-600, $font-size-17, $color-purple3);
+}
 
 .viberLink, .whatsAppLink {
   margin: $spacing-0 $spacing-27;

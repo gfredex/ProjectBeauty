@@ -9,9 +9,10 @@ import {
     SearchPanel,
     MastersToolbar,
     MasterCard,
-    Button, Slider, JoinSection, HelpSection
+    Button, Slider, JoinSection, HelpSection, Footer, IconSprite, FooterNav, FooterLegal
 } from '../../components';
 import React from 'react';
+import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import styles from './home.module.scss';
 
 function Home() {
@@ -21,15 +22,13 @@ function Home() {
                 <div className={'bg-light-pink'}>
                     <div className={'container'}>
                         <div className={styles.headerWrapp}>
-                            <Logo />
+                            <Logo  icon={logoIcon}/>
                             <p className={styles.navbarMenu}>
                                 <Dropdown
                                     buttonLabel="Меню"
                                     items={['Пункт 1', 'Пункт 2', 'Пункт 3']}
                                     iconName={'PurpleArrowDown'}
-                                    iconSize={16}
-                                    iconStroke={'#AA01A2'}
-                                    iconColor={'transparent'}
+                                    iconClassName={'dropDownMenu'}
                                     onItemClick={(label) => alert(`Вы выбрали: ${label}`)}
                                 />
 
@@ -129,6 +128,20 @@ function Home() {
                     </div>
                 </div>
             </Main>
+            <Footer>
+                <div className={'bg-light-pink'}>
+                    <div className={'container'}>
+                        <div className={styles.wrappFooter}>
+                            <IconSprite name='LogoFooter' classNames={{iconClass:'logoFooter'}}/>
+                            <p className={styles.wrappFooterNav}>
+                                <FooterNav/>
+                            </p>
+                            <hr className={styles.footerSeparator}/>
+                            <FooterLegal companyName={'LOGO'} years={'2011–2024'}/>
+                        </div>
+                    </div>
+                </div>
+            </Footer>
         </>
     );
 }

@@ -14,8 +14,13 @@ type ExternalLinkProps = {
     rel?: string;
 };
 
-const ExternalLink: React.FC<ExternalLinkProps> = ({ href, children,
-           classNames = {}, target = '_blank', rel = 'noopener noreferrer'}) => {
+const ExternalLink: React.FC<ExternalLinkProps> = ({
+    href,
+    children,
+    classNames = {},
+    target = '_blank',
+    rel = 'noopener noreferrer',
+}) => {
     return (
         <a href={href} className={cn(styles, 'link', classNames.linkClass)} target={target} rel={rel}>
             {children}
@@ -23,4 +28,4 @@ const ExternalLink: React.FC<ExternalLinkProps> = ({ href, children,
     );
 };
 
-export default ExternalLink;
+export { ExternalLink };

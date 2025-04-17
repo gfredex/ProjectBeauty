@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './helpSection.module.scss';
 import Viber from '../../../assets/icons/colored/Viber.svg?react';
 import WhatsApp from '../../../assets/icons/colored/WhatsApp.svg?react';
-import ExternalLink from "../ExternalLink";
-import {SvgIcon} from "../SvgIcon";
+import { SvgIcon, ExternalLink } from "../../../components";
 
 const HelpSection: React.FC = () => {
     return (
@@ -24,4 +23,4 @@ const HelpSection: React.FC = () => {
     );
 }
 
-export {HelpSection};
+export { HelpSection };

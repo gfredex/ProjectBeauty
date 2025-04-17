@@ -1,13 +1,13 @@
 import React from 'react';
 import {SvgIcon} from "../SvgIcon";
-import logoIcon from '../../../assets/icons/colored/Logo.svg?react';
 
+type LogoProps = {
+    icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+}
 
-const Logo: React.FC = () => {
+const Logo: React.FC<LogoProps> = ({ icon }) => {
     return (
-        <>
-            <SvgIcon Icon={logoIcon}/>
-        </>
+        <SvgIcon Icon={icon} />
     );
 };
 

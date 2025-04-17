@@ -23,21 +23,32 @@ export default defineConfig({
                 plugins: [
                     {
                         name: 'preset-default',
+                        params: {
+                            overrides: {
+                                cleanupNumericValues: false,
+                                convertShapeToPath: false,
+                                removeViewBox: false,
+                            },
+                        },
+                    },
+                    {
+                        name: 'removeViewBox',
+                        active: false,
                     },
                     {
                         name: 'removeAttrs',
-                        params: { attrs: '(fill|stroke)' }, // удаление всех fill и stroke
+                        params: { attrs: '(fill|stroke|width|height)' },
                     },
                     {
                         name: 'addAttributesToSVGElement',
                         params: {
-                            attributes: [{ fill: 'currentColor' }], // добавление fill="currentColor" на родительский SVG
+                            attributes: [{ fill: 'currentColor' }],
                         },
                     },
                     {
                         name: 'convertColors',
                         params: {
-                            currentColor: true, // явно преобразовать все цвета во внутренних элементах в currentColor
+                            currentColor: true,
                         },
                     },
                 ],

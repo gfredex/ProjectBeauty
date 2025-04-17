@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Icon } from '../../UI/Icon';
+import { IconSprite } from '../../UI/IconSprite';
 import { cn } from '../../../utils/cn';
 import styles from './dropdown.module.scss';
 
@@ -16,13 +16,11 @@ type DropdownProps = {
     onItemClick?: (label: string) => void;
     classNames?: ClassNames;
     iconName?: string;
-    iconStroke?: string;
-    iconColor?: string;
-    iconSize?: number;
+    iconClassName?: string;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({items, buttonLabel,
-                       onItemClick, iconStroke, iconSize, iconName, iconColor, classNames = {} }) => {
+                       onItemClick, iconName, iconClassName, classNames = {} }) => {
     const [open, setOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -50,11 +48,7 @@ const Dropdown: React.FC<DropdownProps> = ({items, buttonLabel,
                 className={cn(styles, 'dropMenuBtn', classNames.button)}
             >
                 <span>{buttonLabel}</span>
-                <Icon
-                    name={iconName}
-                    size={iconSize}
-                    color={iconColor}
-                    stroke={iconStroke} />
+                <IconSprite name={iconName} classNames={{iconClass:`${iconClassName}`}}/>
             </button>
 
             {open && (

@@ -17,8 +17,7 @@ const MastersToolbar = () => {
                 buttonLabel='Сортировать по'
                 items={['Пункт 1', 'Пункт 2', 'Пункт 3']}
                 iconName={'PlusIcon'}
-                iconSize={16}
-                iconColor={'#7f207b'}
+                iconClassName={'toolbarIcon'}
                 classNames={{button:'sortBtn', wrapper:'toolbarWrapp'}}
                 onItemClick={(label) => alert(`Вы выбрали: ${label}`)}>
             </Dropdown>

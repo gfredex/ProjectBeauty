@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SvgIcon.module.scss';
+import styles from './svgIcon.module.scss';
 
 type SvgComponent = React.FC<React.SVGProps<SVGSVGElement>>;
 

@@ -1,9 +1,6 @@
 import React from 'react';
 import styles from './masterCard.module.scss';
-import { Picture, SvgIcon, Button } from '../../../components';
-import HeartOutline from '../../../assets/icons/colored/HeartOutline.svg?react';
-import StarOutline from '../../../assets/icons/colored/StarOutline.svg?react';
-import Message from '../../../assets/icons/colored/Message.svg?react';
+import {Picture, Button, IconSprite} from '../../../components';
 import { getReviewWord } from '../../../utils/getWordForm.ts'
 
 type MasterCardProps = {
@@ -21,9 +18,9 @@ const MasterCard: React.FC<MasterCardProps> = ({ name, rating, reviewsCount, spe
             <div className={styles.masterWrapp}>
                 <Picture src={'./images/masterPhoto.png'} alt={'фото мастера'}/>
                 <div className={styles.masterInfo}>
-                    <SvgIcon Icon={StarOutline}/>
+                    <IconSprite name='StarOutline' classNames={{iconClass:'starOutIcon'}}/>
                     <span className={styles.evalMaster}>{rating.toFixed(1)}</span>
-                    <SvgIcon Icon={Message}/>
+                    <IconSprite name='Message' classNames={{iconClass:'messageIcon'}}/>
                     <span>{reviewsCount} {getReviewWord(reviewsCount)}</span>
                 </div>
             </div>
@@ -34,7 +31,7 @@ const MasterCard: React.FC<MasterCardProps> = ({ name, rating, reviewsCount, spe
                         <p className={styles.specialty}>{specialty}</p>
                         <p className={styles.address}>{address}</p>
                     </div>
-                    <SvgIcon Icon={HeartOutline} className={'heartOutline'}/>
+                    <IconSprite name='HeartOutline' classNames={{iconClass:'heartOutIcon'}}/>
                 </p>
                 <Button classNames={{buttonClass: 'bookBtn'}}>Записаться</Button>
             </p>

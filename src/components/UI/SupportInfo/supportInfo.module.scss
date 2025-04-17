@@ -1,0 +1,19 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.supportInfo {
+  @include sizes(100%);
+  max-width: 25%;
+}
+
+.itemSupport {
+  @include fonts($roboto-font, $font-weight-400, $font-size-17, $color-purple3, 1.2);
+}
+
+.emailSupport {
+  padding: $spacing-15 $spacing-0;
+}
+
+.supportSocials {
+  padding-top: $spacing-32;
+}

@@ -1,5 +1,5 @@
 export * from './UI/Header';
-export * from './UI/Icon';
+export * from './UI/IconSprite';
 export * from './UI/Logo';
 export * from './UI/Menu';
 export * from './UI/LinkButton';
@@ -16,4 +16,10 @@ export * from './UI/DiscountCard';
 export * from './UI/Slider';
 export * from './UI/JoinSection';
 export * from './UI/HelpSection';
+export * from './UI/Footer';
+export * from './UI/FooterNav';
+export * from './UI/LocalLink';
+export * from './UI/SupportInfo';
+export * from './UI/ExternalLink';
+export * from './UI/FooterLegal';
 export * from './containers/Dropdown';

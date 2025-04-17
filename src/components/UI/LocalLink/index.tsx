@@ -1,24 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '../../../utils/cn';
-import styles from './linkButton.module.scss';
+import styles from './localLink.module.scss';
 
 type ClassNames = {
     linkClass?: string;
 };
 
-type LinkButtonProps = {
+type LocalLinkProps = {
     to: string;
     children: React.ReactNode;
     classNames?: ClassNames;
 };
 
-const LinkButton: React.FC<LinkButtonProps> = ({ to, children, classNames = {} }) => {
+const LocalLink: React.FC<LocalLinkProps> = ({ to, children, classNames = {} }) => {
     return (
-        <Link to={to} className={cn(styles, 'linkButton', classNames.linkClass)}>
+        <Link to={to} className={cn(styles, 'link', classNames.linkClass)}>
             {children}
         </Link>
     );
 };
 
-export { LinkButton };
+export { LocalLink };
