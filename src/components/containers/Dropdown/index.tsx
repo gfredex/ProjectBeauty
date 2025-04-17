@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { IconSprite } from '../../UI/IconSprite';
-import { cn } from '../../../utils/cn';
-import styles from './dropdown.module.scss';
+import { DropdownUI } from '../../UI/DropdownUI';
 
 type ClassNames = {
     wrapper?: string;
@@ -10,7 +8,7 @@ type ClassNames = {
     item?: string;
 };
 
-type DropdownProps = {
+type DropdownContainerProps = {
     items: string[];
     buttonLabel: string;
     onItemClick?: (label: string) => void;
@@ -19,8 +17,14 @@ type DropdownProps = {
     iconClassName?: string;
 };
 
-const Dropdown: React.FC<DropdownProps> = ({items, buttonLabel,
-                       onItemClick, iconName, iconClassName, classNames = {} }) => {
+const Dropdown: React.FC<DropdownContainerProps> = ({
+                                                                 items,
+                                                                 buttonLabel,
+                                                                 onItemClick,
+                                                                 iconName,
+                                                                 iconClassName,
+                                                                 classNames = {},
+                                                             }) => {
     const [open, setOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -35,36 +39,25 @@ const Dropdown: React.FC<DropdownProps> = ({items, buttonLabel,
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const toggleDropdown = () => setOpen(prev => !prev);
+
     const handleItemClick = (label: string) => {
         onItemClick?.(label);
         setOpen(false);
     };
 
     return (
-        <div ref={menuRef} className={cn(styles, 'dropMenuWrap', classNames.wrapper)}>
-            <button
-                type='button'
-                onClick={() => setOpen(prev => !prev)}
-                className={cn(styles, 'dropMenuBtn', classNames.button)}
-            >
-                <span>{buttonLabel}</span>
-                <IconSprite name={iconName} classNames={{iconClass:`${iconClassName}`}}/>
-            </button>
-
-            {open && (
-                <ul className={cn(styles, 'dropMenuList', classNames.list)}>
-                    {items.map((label, index) => (
-                        <li
-                            key={index}
-                            className={cn(styles, 'dropMenuItem', classNames.item)}
-                            onClick={() => handleItemClick(label)}
-                        >
-                            {label}
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
+        <DropdownUI
+            open={open}
+            menuRef={menuRef}
+            items={items}
+            buttonLabel={buttonLabel}
+            onItemClick={handleItemClick}
+            toggleDropdown={toggleDropdown}
+            classNames={classNames}
+            iconName={iconName}
+            iconClassName={iconClassName}
+        />
     );
 };
 

@@ -23,5 +23,6 @@ export * from './UI/SupportInfo';
 export * from './UI/ExternalLink';
 export * from './UI/FooterLegal';
 export * from './UI/CountryUI';
+export * from './UI/DropdownUI';
 export * from './containers/Dropdown';
 export * from './containers/CountrySelector';
