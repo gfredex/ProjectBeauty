@@ -9,7 +9,7 @@ import {
     SearchPanel,
     MastersToolbar,
     MasterCard,
-    Button, Slider, JoinSection, HelpSection, Footer, IconSprite, FooterNav, FooterLegal
+    Button, Slider, JoinSection, HelpSection, Footer, IconSprite, FooterNav, FooterLegal, CountrySelector
 } from '../../components';
 import React from 'react';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
@@ -137,7 +137,10 @@ function Home() {
                                 <FooterNav/>
                             </p>
                             <hr className={styles.footerSeparator}/>
-                            <FooterLegal companyName={'LOGO'} years={'2011–2024'}/>
+                            <p className={styles.basement}>
+                                <FooterLegal companyName={'LOGO'} years={'2011–2024'}/>
+                                <CountrySelector/>
+                            </p>
                         </div>
                     </div>
                 </div>

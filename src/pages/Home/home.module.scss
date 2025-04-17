@@ -51,3 +51,7 @@
     border: none;
     background-color: $color-purple3;
 }
+
+.basement {
+    @include rowing(space-between);
+}
