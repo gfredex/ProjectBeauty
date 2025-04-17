@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styles from './countrySelector.module.scss';
-import {IconSprite} from "../../UI/IconSprite";
+import { CountryUI } from '../../UI/CountryUI';
 
 type Country = {
     code: string;
@@ -28,7 +27,6 @@ const CountrySelector: React.FC = () => {
         setOpen(false);
     };
 
-    // обработка кликов вне компонента
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
@@ -43,39 +41,14 @@ const CountrySelector: React.FC = () => {
     }, []);
 
     return (
-        <div className={styles.wrapper} ref={wrapperRef}>
-            {current && (
-                <div className={styles.currentCountry} onClick={toggleDropdown}>
-                    <img
-                        src={`https://flagcdn.com/w40/${current.code}.png`}
-                        alt={current.name}
-                        className={styles.flag}
-                    />
-                    <span>
-                        {current.name} — <span className={styles.changeText}>сменить страну</span>
-                    </span>
-                    <IconSprite name='PurpleArrowDown' classNames={{iconClass:'selectCountry'}}/>
-                </div>
-            )}
-            {open && (
-                <ul className={styles.dropdown}>
-                    {countries.map((country) => (
-                        <li
-                            key={country.code}
-                            onClick={() => selectCountry(country.code)}
-                            className={styles.dropdownItem}
-                        >
-                            <img
-                                src={`https://flagcdn.com/w40/${country.code}.png`}
-                                alt={country.name}
-                                className={styles.flag}
-                            />
-                            {country.name}
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
+        <CountryUI
+            wrapperRef={wrapperRef}
+            open={open}
+            current={current}
+            countries={countries}
+            toggleDropdown={toggleDropdown}
+            selectCountry={selectCountry}
+        />
     );
 };
 
