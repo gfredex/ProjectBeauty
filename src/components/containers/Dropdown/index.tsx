@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { DropdownUI } from '../../UI/DropdownUI';
+import { useDropdown } from '../../../hooks/useDropdown';
 
 type ClassNames = {
     wrapper?: string;
@@ -18,42 +19,28 @@ type DropdownContainerProps = {
 };
 
 const Dropdown: React.FC<DropdownContainerProps> = ({
-                                                                 items,
-                                                                 buttonLabel,
-                                                                 onItemClick,
-                                                                 iconName,
-                                                                 iconClassName,
-                                                                 classNames = {},
-                                                             }) => {
-    const [open, setOpen] = useState(false);
-    const menuRef = useRef<HTMLDivElement | null>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-                setOpen(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
-    const toggleDropdown = () => setOpen(prev => !prev);
+                                                        items,
+                                                        buttonLabel,
+                                                        onItemClick,
+                                                        iconName,
+                                                        iconClassName,
+                                                        classNames = {},
+                                                    }) => {
+    const { open, toggle, ref } = useDropdown<HTMLDivElement>();
 
     const handleItemClick = (label: string) => {
         onItemClick?.(label);
-        setOpen(false);
+        toggle(); // или close() если нужно
     };
 
     return (
         <DropdownUI
             open={open}
-            menuRef={menuRef}
+            menuRef={ref}
             items={items}
             buttonLabel={buttonLabel}
             onItemClick={handleItemClick}
-            toggleDropdown={toggleDropdown}
+            toggleDropdown={toggle}
             classNames={classNames}
             iconName={iconName}
             iconClassName={iconClassName}

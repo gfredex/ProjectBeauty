@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { CountryUI } from '../../UI/CountryUI';
+import { useDropdown } from '../../../hooks/useDropdown';
 
 type Country = {
     code: string;
@@ -15,38 +16,22 @@ const countries: Country[] = [
 ];
 
 const CountrySelector: React.FC = () => {
-    const [selected, setSelected] = useState<string>('by');
-    const [open, setOpen] = useState<boolean>(false);
-    const wrapperRef = useRef<HTMLDivElement>(null);
+    const [selected, setSelected] = React.useState<string>('by');
+    const { open, toggle, ref } = useDropdown<HTMLDivElement>();
 
     const current = countries.find((c) => c.code === selected);
-
-    const toggleDropdown = (): void => setOpen(!open);
     const selectCountry = (code: string): void => {
         setSelected(code);
-        setOpen(false);
+        toggle();
     };
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-                setOpen(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
 
     return (
         <CountryUI
-            wrapperRef={wrapperRef}
+            wrapperRef={ref}
             open={open}
             current={current}
             countries={countries}
-            toggleDropdown={toggleDropdown}
+            toggleDropdown={toggle}
             selectCountry={selectCountry}
         />
     );
