@@ -1,0 +1,11 @@
+@use '../../../styles/variables' as *;
+/*@use '../../../styles/mixins' as *;*/
+
+.input {
+ /* @include fonts($manroupe-font, $font-weight-400, $font-size-16);*/
+
+  padding: $spacing-8;
+  margin: $spacing-8 $spacing-0;
+  border-radius: $spacing-4;
+  border: $spacing-1 solid $color-gray;
+}

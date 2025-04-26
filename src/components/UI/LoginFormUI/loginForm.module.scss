@@ -1,0 +1,12 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.formWrapper {
+  @include rowing(center, center);
+  min-height: 100vh;
+}
+
+.loginForm {
+  @include rowing(nuu, null, column);
+  gap: $spacing-12;
+}
