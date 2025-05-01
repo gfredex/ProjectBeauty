@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './masterCard.module.scss';
-import {Picture, Button, IconSprite} from '../../../components';
-import { getReviewWord } from '../../../utils/getWordForm.ts'
+import {Picture, Button, IconSprite} from '@/components';
+import { getReviewWord } from '@/utils/getWordForm.ts'
 
 type MasterCardProps = {
     name?: string;

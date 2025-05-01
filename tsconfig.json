@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        /* Linting */
         "strict": true,
         "noUnusedLocals": true, //Предупреждает о неиспользуемых локальных переменных
         "noUnusedParameters": true, //Предупреждает о неиспользуемых параметрах функций

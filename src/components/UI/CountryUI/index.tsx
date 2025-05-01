@@ -1,6 +1,6 @@
 import React, { RefObject } from 'react';
 import styles from './countryUI.module.scss';
-import { IconSprite } from '../IconSprite';
+import { IconSprite } from '@/components';
 
 type Country = {
     code: string;

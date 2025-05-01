@@ -5,12 +5,20 @@ import {
     Logo,
     Main,
     Menu,
-    Banner,
     SearchPanel,
     MastersToolbar,
     MasterCard,
-    Button, Slider, JoinSection, HelpSection, Footer, IconSprite, FooterNav, FooterLegal, CountrySelector
-} from '../../components';
+    Button,
+    Slider,
+    JoinSection,
+    HelpSection,
+    Footer,
+    IconSprite,
+    FooterNav,
+    FooterLegal,
+    CountrySelector,
+    BannerContainer,
+} from '@/components';
 import React from 'react';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import styles from './home.module.scss';
@@ -42,13 +50,7 @@ function Home() {
             <Main>
                 <div className={styles.hero}>
                     <div className={'container _h-100'}>
-                        <Banner
-                            title={'Твой мастер маникюра'}
-                            subtitle={
-                                'Онлайн-запись, напоминания клиентам и ведение клиентской базы для профессионалов индустрии красоты'
-                            }
-                            description={'один сервис - много возможностей'}
-                        />
+                        <BannerContainer/>
                     </div>
                 </div>
                 <div className={'bg-white'}>

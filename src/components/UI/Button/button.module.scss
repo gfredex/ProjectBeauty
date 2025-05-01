@@ -7,15 +7,15 @@
   border: none;
 }
 
-.masters {
+.activeButton {
   @include fonts($manroupe-font, $font-weight-300, $font-size-36, $color-black);
-  margin-right: $spacing-75;
+  margin: $spacing-0 $spacing-75;
   background-color: $color-white;
 }
 
-.clients {
+.inactiveButton {
   @include fonts($manroupe-font, $font-weight-300, $font-size-36, $color-white);
-  margin-left: $spacing-75;
+  margin: $spacing-0 $spacing-75;
   background-color: $color-purple3;
 }
 

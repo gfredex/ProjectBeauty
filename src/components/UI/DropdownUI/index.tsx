@@ -1,6 +1,6 @@
 import React, { RefObject } from 'react';
-import { IconSprite } from '../IconSprite';
-import { cn } from '../../../utils/cn';
+import { IconSprite } from '@/components';
+import { cn } from '@/utils/cn.ts';
 import styles from './dropdown.module.scss';
 
 type ClassNames = {

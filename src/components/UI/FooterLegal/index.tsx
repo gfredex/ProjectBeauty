@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './footerLegal.module.scss';
-import {IconSprite} from "../IconSprite";
+import {IconSprite} from '@/components';
 
 interface FooterLegalProps {
     companyName: string;

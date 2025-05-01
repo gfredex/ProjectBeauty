@@ -26,3 +26,4 @@ export * from './UI/CountryUI';
 export * from './UI/DropdownUI';
 export * from './containers/Dropdown';
 export * from './containers/CountrySelector';
+export * from './containers/BannerContainer';

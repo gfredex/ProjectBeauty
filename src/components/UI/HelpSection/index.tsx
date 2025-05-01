@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './helpSection.module.scss';
 import Viber from '../../../assets/icons/colored/Viber.svg?react';
 import WhatsApp from '../../../assets/icons/colored/WhatsApp.svg?react';
-import { SvgIcon, ExternalLink } from "../../../components";
+import { SvgIcon, ExternalLink } from '@/components';
 
 const HelpSection: React.FC = () => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../../../utils/cn';
+import { cn } from '@/utils/cn.ts';
 import styles from './button.module.scss';
 
 type ClassNames = {

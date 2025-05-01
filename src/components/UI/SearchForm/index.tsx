@@ -1,8 +1,7 @@
 import React from 'react';
-import { Dropdown } from '../../containers/Dropdown';
+import { Dropdown, IconSprite } from '@/components';
 import styles from './searchForm.module.scss';
 import {Button} from "../Button";
-import { IconSprite } from "../IconSprite";
 
 const SearchForm: React.FC  = () => {
     return (

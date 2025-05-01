@@ -1,6 +1,6 @@
 import React from 'react';
-import { DropdownUI } from '../../UI/DropdownUI';
-import { useDropdown } from '../../../hooks/useDropdown';
+import { DropdownUI } from '@/components';
+import { useDropdown } from '@/hooks/useDropdown.ts';
 
 type ClassNames = {
     wrapper?: string;

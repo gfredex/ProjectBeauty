@@ -1,6 +1,10 @@
 {
     "compilerOptions": {
         //параметры компилятора
+        "baseUrl": "./src",
+        "paths": {
+            "@/*": ["*"]
+        },
         "target": "ES2020",
         "useDefineForClassFields": true, //инициализация полей классов происходит с помощью defineProperty
         "lib": ["ES2020", "DOM", "DOM.Iterable"],

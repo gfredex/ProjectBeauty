@@ -1,6 +1,6 @@
 import styles from './mastersToolbar.module.scss';
 import { Button } from "../Button";
-import {Dropdown} from "../../containers/Dropdown";
+import {Dropdown} from '@/components';
 
 const MastersToolbar = () => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './joinSection.module.scss';
-import { Picture, Button } from "../../../components";
+import { Picture, Button } from '@/components';
 
 const JoinSection: React.FC = () => {
     return (

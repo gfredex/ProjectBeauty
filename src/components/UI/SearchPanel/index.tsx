@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchForm } from '../SearchForm';
+import { SearchForm } from '@/components';
 import styles from './searchPanel.module.scss';
 
 type SearchPanelProps = {

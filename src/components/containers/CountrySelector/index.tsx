@@ -1,6 +1,6 @@
 import React from 'react';
-import { CountryUI } from '../../UI/CountryUI';
-import { useDropdown } from '../../../hooks/useDropdown';
+import { CountryUI } from '@/components';
+import { useDropdown } from '@/hooks/useDropdown.ts';
 
 type Country = {
     code: string;

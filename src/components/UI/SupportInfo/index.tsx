@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './supportInfo.module.scss';
 import VK from '../../../assets/icons/colored/VK.svg?react';
 import Youtube from '../../../assets/icons/colored/Youtube.svg?react';
-import {SvgIcon, ExternalLink } from '../../../components';
+import {SvgIcon, ExternalLink } from '@/components';
 
 
 const SupportInfo: React.FC = () => {
