@@ -1,0 +1,32 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.masterProfileCard {
+  @include sizes(100%);
+  max-width: 514px;
+  align-self: flex-start;
+  padding: $spacing-16 $spacing-24;
+  border-radius: $spacing-12;
+  background-color: $color-white;
+}
+
+.cardHeader {
+  @include rowing(null, center);
+  padding-bottom: $spacing-12;
+}
+
+.title {
+  padding-left: $spacing-33;
+}
+
+.title, .masterName {
+  @include fonts($manroupe-font, $font-weight-700, $font-size-20);
+}
+
+.masterEmail, .masterPhone {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-17, $color-gray2);
+}
+
+.masterName, .masterEmail {
+  padding-bottom: $spacing-12;
+}

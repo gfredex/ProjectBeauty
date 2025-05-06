@@ -1,0 +1,126 @@
+import React, { useState } from 'react';
+import { Card, Button, Row, Col, Typography, Space } from 'antd';
+import type { Moment } from 'moment';
+import moment from 'moment';
+import PrevCalendar from '../../../assets/icons/colored/PrevCalendar.svg?react';
+import NextCalendar from '../../../assets/icons/colored/NextCalendar.svg?react';
+import FreeIcon from '../../../assets/icons/colored/FreeIcon.svg?react';
+import BusyIcon from '../../../assets/icons/colored/BusyIcon.svg?react';
+import styles from './shedule.module.scss';
+import { SvgIcon } from '@/components';
+import { cn } from '@/utils/cn.ts';
+
+const { Title, Text } = Typography;
+
+const weekDays = [
+    { label: 'ПН', offset: 1 },
+    { label: 'ВТ', offset: 2 },
+    { label: 'СР', offset: 3 },
+    { label: 'ЧТ', offset: 4 },
+    { label: 'ПТ', offset: 5 },
+    { label: 'СБ', offset: 6 },
+    { label: 'ВС', offset: 0 },
+];
+
+const mockSchedule = {
+    '2025-05-07': [
+        { time: '11:30', status: 'Свободно' },
+        { time: '13:30', status: 'Занято' },
+        { time: '15:00', status: 'Свободно' },
+    ],
+};
+
+const Schedule: React.FC = () => {
+    const [selectedDate, setSelectedDate] = useState<Moment>(moment());
+
+    const startOfWeek = selectedDate.clone().startOf('week');
+    const schedule = mockSchedule[selectedDate.format('YYYY-MM-DD')] || [];
+
+    const handleWeekChange = (direction: 'prev' | 'next') => {
+        const newDate = selectedDate.clone().add(direction === 'next' ? 7 : -7, 'days');
+        setSelectedDate(newDate);
+    };
+
+    return (
+        <div className={styles.wrappShedule}>
+            <Row className={styles.headShedule} justify='space-between'>
+                <Title level={3} className={styles.title}>Мой график</Title>
+                <Button type='link' className={styles.btnCalendar}>Смотреть Календарь</Button>
+            </Row>
+
+            <Row align='middle' justify='space-between' style={{ marginBottom: 16 }}>
+                <Col className={styles.wrappBtnPrev}>
+                    <Button
+                        icon={<SvgIcon Icon={PrevCalendar}/>}
+                        onClick={() => handleWeekChange('prev')}
+                        className={styles.btnPrev}/>
+                </Col>
+                <Col flex='auto'>
+                    <Row gutter={8} justify='center' className={styles.weekDaysRow}>
+                        {weekDays.map(({ label, offset }) => {
+                            const day = startOfWeek.clone().add(offset, 'days');
+                            const isSelected = day.isSame(selectedDate, 'day');
+
+                            return (
+                                <Col className={styles.wrappBtnDay} key={offset} flex='1'>
+                                    <Button
+                                        className={`${styles.btnDay} ${isSelected ? styles.selected : ''}`}
+                                        block
+                                        type='default'
+                                        onClick={() => setSelectedDate(day)}
+                                    >
+                                        <div className={styles.dayLabel}>{label}</div>
+                                        <strong className={styles.dayNumber}>{day.date()}</strong>
+                                    </Button>
+                                </Col>
+                            );
+                        })}
+                    </Row>
+                </Col>
+                <Col className={styles.wrappBtnNext}>
+                    <Button
+                        icon={<SvgIcon Icon={NextCalendar}/>}
+                        onClick={() => handleWeekChange('next')}
+                        className={styles.btnNext}/>
+                </Col>
+            </Row>
+
+            <Space direction='vertical' style={{ width: '100%' }} size='middle'>
+                {schedule.map((slot, index) => (
+                    <Card
+                        key={index}
+                        className={cn(styles, 'card', slot.status === 'Занято' ? 'cardBusy' : 'cardFree')}
+                    >
+                        <Row className={styles.slotRow}>
+                            <Col>
+                                {slot.status === 'Свободно' ? (
+                                    <SvgIcon Icon={FreeIcon} />
+                                ) : (
+                                    <SvgIcon Icon={BusyIcon} />
+                                )}
+                            </Col>
+                            <Col flex='auto'>
+                                <Text className={styles.status}>
+                                    {slot.status}
+                                </Text>
+                                <div className={styles.address}>
+                                    Адрес: адрес салона или клиента
+                                </div>
+                            </Col>
+
+                            <Col className={styles.timeCol}>
+                                <Text className={styles.time}>
+                                    {slot.time}
+                                </Text>
+                            </Col>
+                        </Row>
+                    </Card>
+                ))}
+
+                {schedule.length === 0 && <Text>Нет слотов на выбранную дату.</Text>}
+            </Space>
+        </div>
+    );
+};
+
+export { Schedule };

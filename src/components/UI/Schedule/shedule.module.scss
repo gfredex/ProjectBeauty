@@ -1,0 +1,95 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.wrappShedule {
+  @include sizes(100%);
+  max-width: 560px;
+  padding: $spacing-16 $spacing-24;
+  border-radius: $spacing-12;
+  background-color: $color-white;
+}
+
+.title {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-18, $color-black);
+}
+
+.headShedule {
+  justify-content: space-between;
+
+  > .btnCalendar {
+    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-black);
+  }
+}
+
+.btnDay {
+  @include sizes(null, $spacing-73);
+  display: block;
+  padding:  $spacing-0 $spacing-5;
+  border: none;
+  background-color: $color-pink;
+}
+
+.weekDaysRow > .wrappBtnDay > .btnDay {
+  &:hover {
+    background-color: $color-pink2;
+  }
+}
+
+.btnPrev, .btnNext {
+  @include sizes($spacing-20);
+  border: none;
+}
+
+.wrappBtnPrev > .btnPrev {
+  @include sizes($spacing-20);
+  margin-right:  $spacing-15;
+}
+
+.wrappBtnNext > .btnNext {
+  @include sizes($spacing-20);
+  margin-left: $spacing-15;
+}
+
+.dayLabel {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-black3);
+}
+
+.dayNumber {
+  @include fonts($manroupe-font, $font-weight-700, $font-size-16, $color-black3);
+}
+
+.selected {
+  background-color: $color-purple3;
+
+  > .dayLabel,  > .dayNumber {
+    color: $color-white;
+  }
+}
+
+.slotRow {
+  align-items: center;
+}
+
+.card {
+  border: none;
+}
+
+.cardFree {
+  background-color: $color-pink;
+}
+
+.cardBusy {
+  background-color: $color-purple3;
+}
+
+.status {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-purple3);
+}
+
+.address {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
+}
+
+.time {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-purple3);
+}

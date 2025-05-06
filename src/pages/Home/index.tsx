@@ -151,4 +151,4 @@ function Home() {
     );
 }
 
-export {Home};
+export { Home };
