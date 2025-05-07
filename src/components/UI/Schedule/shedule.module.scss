@@ -1,6 +1,13 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
+@font-face {
+  font-family: 'Manrope-Regular';
+  src: url('../../../assets/fonts/Manrope-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .wrappShedule {
   @include sizes(100%);
   max-width: 560px;
@@ -91,5 +98,5 @@
 }
 
 .time {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-purple3);
+  @include fonts(Manrope-Regular, $font-weight-400, $font-size-14, $color-purple3);
 }
