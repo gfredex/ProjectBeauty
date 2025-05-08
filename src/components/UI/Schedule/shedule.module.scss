@@ -77,8 +77,20 @@
   align-items: center;
 }
 
+.iconCol {
+  padding-top: $spacing-10;
+}
+
+.statusCol {
+  padding-left:  $spacing-20;
+}
+
 .card {
   border: none;
+
+  > div {
+    padding-bottom: $spacing-20;
+  }
 }
 
 .cardFree {
@@ -90,13 +102,22 @@
 }
 
 .status {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-18, $color-purple3);
+  @include fonts($manroupe-font, $font-weight-400, $font-size-20, $color-purple3);
 }
 
 .address {
   @include fonts($manroupe-font, $font-weight-400, $font-size-14, $color-gray2);
+  padding-top: $spacing-4;
 }
 
 .time {
-  @include fonts(Manrope-Regular, $font-weight-400, $font-size-14, $color-purple3);
+  @include fonts(Manrope-Regular, $font-weight-400, $font-size-18, $color-purple3);
+}
+
+.statusBusy, .addressBusy, .timeBusy {
+  color: $color-white;
+}
+
+.lastCard {
+  box-shadow: $spacing-0 $spacing-3 $spacing-0 $spacing-0 $color-purple3;
 }

@@ -89,33 +89,38 @@ const Schedule: React.FC = () => {
                 {schedule.map((slot, index) => (
                     <Card
                         key={index}
-                        className={cn(styles, 'card', slot.status === 'Занято' ? 'cardBusy' : 'cardFree')}
+                        className={cn(
+                            styles,
+                            'card',
+                            slot.status === 'Занято' ? 'cardBusy' : 'cardFree',
+                            index === schedule.length - 1 ? 'lastCard' : undefined
+                        )}
                     >
                         <Row className={styles.slotRow}>
-                            <Col>
+                            <Col className={styles.iconCol}>
                                 {slot.status === 'Свободно' ? (
                                     <SvgIcon Icon={FreeIcon} />
                                 ) : (
                                     <SvgIcon Icon={BusyIcon} />
                                 )}
                             </Col>
-                            <Col flex='auto'>
-                                <Text className={styles.status}>
+                            <Col flex='auto' className={styles.statusCol}>
+                                <Text className={cn(styles, 'status', slot.status === 'Занято' ? 'statusBusy' : undefined)}>
                                     {slot.status}
                                 </Text>
-                                <div className={styles.address}>
+                                <div className={cn(styles, 'address', slot.status === 'Занято' ? 'addressBusy' : undefined)}>
                                     Адрес: адрес салона или клиента
                                 </div>
                             </Col>
-
                             <Col className={styles.timeCol}>
-                                <Text className={styles.time}>
+                                <Text className={cn(styles, 'time', slot.status === 'Занято' ? 'timeBusy' : undefined)}>
                                     {slot.time}
                                 </Text>
                             </Col>
                         </Row>
                     </Card>
                 ))}
+
 
                 {schedule.length === 0 && <Text>Нет слотов на выбранную дату.</Text>}
             </Space>
