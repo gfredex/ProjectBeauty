@@ -9,7 +9,7 @@ type MasterProfileContainerProps = {
 
 const MasterProfileContainer: React.FC<MasterProfileContainerProps> = ({ photoUrl }) => {
     const dispatch = useAppDispatch();
-    const user = useAppSelector((state) => state.user);
+    const user = useAppSelector((state) => state.master);
 
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState(user);

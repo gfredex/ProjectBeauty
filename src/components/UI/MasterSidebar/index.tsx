@@ -14,7 +14,7 @@ type MasterSidebarProps = {
 };
 
 const MasterSidebar: React.FC<MasterSidebarProps> = ({ avatarUrl }) => {
-    const userName = useAppSelector((state) => state.user.name);
+    const userName = useAppSelector((state) => state.master.name);
 
     return (
         <aside className={styles.masterSidebar}>

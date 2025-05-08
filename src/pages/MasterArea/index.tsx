@@ -1,5 +1,15 @@
 import React from 'react';
-import { Dropdown, Header, Main, LinkButton, Logo, Menu, MasterSidebar, MasterProfileContainer, Schedule } from '@/components';
+import {
+    Dropdown,
+    Header,
+    Main,
+    LinkButton,
+    Logo,
+    Menu,
+    MasterSidebar,
+    MasterProfileContainer,
+    ScheduleContainer, MasterAboutContainer, MasterEducationContainer,
+} from '@/components';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import styles from './masterArea.module.scss';
 
@@ -34,11 +44,14 @@ const MasterArea = () => {
                         <div className={styles.masterProfileSection}>
                             <MasterSidebar/>
                             <div className={styles.wrappMainPanel}>
-                                <p className={styles.mainPanel}>
+                                <div className={styles.mainPanel}>
                                     <MasterProfileContainer/>
-                                    <Schedule/>
-                                </p>
-
+                                    <ScheduleContainer/>
+                                </div>
+                                <div className={styles.wrappAboutCard}>
+                                    <MasterAboutContainer/>
+                                    <MasterEducationContainer/>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,6 @@
 .mainPanel {
   @include rowing(space-between);
   padding: $spacing-16 $spacing-24;
-  background-color: $color-pink;
 }
 
 .masterProfileSection {
@@ -24,4 +23,11 @@
 .wrappMainPanel {
   flex-grow: 1;
   padding-top:   $spacing-14;
+  background-color: $color-pink;
+}
+
+.wrappAboutCard {
+  margin:  $spacing-0 $spacing-24;
+  border-radius:  $spacing-12;
+  background-color: $color-pink;
 }

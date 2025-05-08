@@ -1,0 +1,22 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.aboutCard {
+  margin-bottom: $spacing-24;
+  padding: $spacing-16 $spacing-24 $spacing-30;
+  background-color: $color-white;
+  border-radius: $spacing-12;
+}
+
+.header {
+  @include rowing(null, center);
+  padding-bottom: $spacing-16;
+}
+
+.title {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
+}
+
+.text {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
+}

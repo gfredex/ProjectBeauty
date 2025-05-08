@@ -52,3 +52,10 @@
   stroke: $color-purple3;
   color: transparent;
 }
+
+.check {
+  @include sizes($spacing-30, $spacing-30);
+  margin-left: $spacing-10;
+  stroke: $color-purple3;
+  color: transparent;
+}

@@ -3,6 +3,7 @@
 
 .masterSidebar {
   @include sizes(100%);
+  align-self: flex-start;
   max-width: 270px;
   border-radius: $spacing-9;
   background-color: $color-purple3;
