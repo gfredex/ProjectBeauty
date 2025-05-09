@@ -8,10 +8,11 @@ import {
     Menu,
     MasterSidebar,
     MasterProfileContainer,
-    ScheduleContainer, MasterAboutContainer, MasterEducationContainer,
+    ScheduleContainer, MasterAboutContainer, MasterEducationContainer, MasterAdressesContainer,
 } from '@/components';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import styles from './masterArea.module.scss';
+import { MasterExperienceContainer } from '@/components/containers/MasterExperienceContainer';
 
 
 const MasterArea = () => {
@@ -51,6 +52,8 @@ const MasterArea = () => {
                                 <div className={styles.wrappAboutCard}>
                                     <MasterAboutContainer/>
                                     <MasterEducationContainer/>
+                                    <MasterExperienceContainer/>
+                                    <MasterAdressesContainer/>
                                 </div>
                             </div>
                         </div>
