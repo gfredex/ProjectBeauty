@@ -54,8 +54,8 @@
 }
 
 .check {
-  @include sizes($spacing-30, $spacing-30);
-  margin-left: $spacing-10;
+  @include sizes($spacing-48, $spacing-30);
+  margin-left: $spacing-5;
   stroke: $color-purple3;
   color: transparent;
 }
