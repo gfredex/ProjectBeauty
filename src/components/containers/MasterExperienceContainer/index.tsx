@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { useSyncState } from '@/hooks/useSyncState';
 import { updateExperience } from '@/stores/slices/userSlice';
 import { MasterExperience } from '@/components';
 
@@ -14,11 +15,7 @@ const MasterExperienceContainer: React.FC = () => {
     const experience = useAppSelector((state) => state.master.experience);
 
     const [isEditing, setIsEditing] = useState(false);
-    const [tempExperience, setTempExperience] = useState<ExperienceItem[]>([]);
-
-    useEffect(() => {
-        setTempExperience(experience);
-    }, [experience]);
+    const [tempExperience, setTempExperience] = useSyncState(experience);
 
     const handleEdit = () => setIsEditing(true);
     const handleCancel = () => {

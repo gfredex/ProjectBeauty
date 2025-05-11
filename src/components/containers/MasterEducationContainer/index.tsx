@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { useSyncState } from '@/hooks/useSyncState';
 import { updateEducation } from '@/stores/slices/userSlice';
 import { MasterEducation } from '@/components';
 import type { EducationItem } from '@/stores/slices/userSlice';
@@ -9,11 +10,7 @@ const MasterEducationContainer: React.FC = () => {
     const education = useAppSelector((state) => state.master.education);
 
     const [isEditing, setIsEditing] = useState(false);
-    const [tempEducation, setTempEducation] = useState<EducationItem[]>([]);
-
-    useEffect(() => {
-        setTempEducation(education);
-    }, [education]);
+    const [tempEducation, setTempEducation] = useSyncState(education);
 
     const handleEdit = () => setIsEditing(true);
 

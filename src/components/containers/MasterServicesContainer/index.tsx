@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MasterServices } from '@/components';
+import { useSyncState } from '@/hooks/useSyncState';
 
 export type ServiceItem = {
     title: string;
@@ -16,13 +17,10 @@ const defaultServices: ServiceItem[] = [
 ];
 
 const MasterServicesContainer: React.FC = () => {
-    const [services, setServices] = useState<ServiceItem[]>(defaultServices);
     const [originalServices, setOriginalServices] = useState<ServiceItem[]>([]);
     const [isEditing, setIsEditing] = useState(false);
 
-    useEffect(() => {
-        setServices(defaultServices);
-    }, []);
+    const [services, setServices] = useSyncState(defaultServices);
 
     const handleEdit = () => {
         setOriginalServices(services);

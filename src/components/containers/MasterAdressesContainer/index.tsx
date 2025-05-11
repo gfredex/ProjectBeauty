@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { useSyncState } from '@/hooks/useSyncState';
 import { updateAddress } from '@/stores/slices/userSlice';
 import { MasterAddresses } from '@/components';
 
@@ -16,13 +17,10 @@ const MasterAdressesContainer: React.FC = () => {
         return Array.isArray(addressData) ? addressData : [addressData];
     }, [addressData]);
 
-    const [addresses, setAddresses] = useState<AddressItem[]>([]);
     const [originalAddresses, setOriginalAddresses] = useState<AddressItem[]>([]);
     const [isEditing, setIsEditing] = useState(false);
 
-    useEffect(() => {
-        setAddresses(initialAddresses);
-    }, [initialAddresses]);
+    const [addresses, setAddresses] = useSyncState(initialAddresses);
 
     const handleEdit = () => {
         setOriginalAddresses(addresses);
