@@ -1,30 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MasterAbout } from '@/components';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { updateAbout } from '@/stores/slices/userSlice';
+import { useEditableValue } from '@/hooks/useEditableValue';
 
 const MasterAboutContainer: React.FC = () => {
     const dispatch = useAppDispatch();
     const aboutText = useAppSelector((state) => state.master.about);
 
-    const [isEditing, setIsEditing] = useState(false);
-    const [tempText, setTempText] = useState(aboutText);
-
-    useEffect(() => {
-        setTempText(aboutText);
-    }, [aboutText]);
-
-    const handleEdit = () => setIsEditing(true);
-
-    const handleCancel = () => {
-        setTempText(aboutText);
-        setIsEditing(false);
-    };
-
-    const handleSave = () => {
-        dispatch(updateAbout(tempText));
-        setIsEditing(false);
-    };
+    const {
+        value: tempText,
+        setValue: setTempText,
+        isEditing,
+        handleEdit,
+        handleCancel,
+        handleSave,
+    } = useEditableValue(aboutText);
 
     return (
         <MasterAbout
@@ -33,7 +24,7 @@ const MasterAboutContainer: React.FC = () => {
             isEditing={isEditing}
             onEdit={handleEdit}
             onChange={setTempText}
-            onSave={handleSave}
+            onSave={() => handleSave((text) => dispatch(updateAbout(text)))}
             onCancel={handleCancel}
         />
     );

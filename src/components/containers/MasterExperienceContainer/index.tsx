@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { useSyncState } from '@/hooks/useSyncState';
 import { updateExperience } from '@/stores/slices/userSlice';
 import { MasterExperience } from '@/components';
+import { useEditableList } from '@/hooks/useEditableList';
 
 type ExperienceItem = {
     title: string;
@@ -14,32 +14,20 @@ const MasterExperienceContainer: React.FC = () => {
     const dispatch = useAppDispatch();
     const experience = useAppSelector((state) => state.master.experience);
 
-    const [isEditing, setIsEditing] = useState(false);
-    const [tempExperience, setTempExperience] = useSyncState(experience);
-
-    const handleEdit = () => setIsEditing(true);
-    const handleCancel = () => {
-        setTempExperience(experience);
-        setIsEditing(false);
-    };
-    const handleSave = () => {
-        dispatch(updateExperience(tempExperience));
-        setIsEditing(false);
-    };
-
-    const handleChange = (index: number, field: keyof ExperienceItem, value: string) => {
-        setTempExperience((prev) =>
-            prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
-        );
-    };
-
-    const handleAdd = () => {
-        setTempExperience((prev) => [...prev, { title: '', yearStart: '', yearEnd: '' }]);
-    };
-
-    const handleRemove = (index: number) => {
-        setTempExperience((prev) => prev.filter((_, i) => i !== index));
-    };
+    const {
+        items: tempExperience,
+        isEditing,
+        handleEdit,
+        handleCancel,
+        handleChange,
+        handleAdd,
+        handleRemove,
+        handleSave,
+    } = useEditableList<ExperienceItem>({
+        initialList: experience,
+        emptyItem: { title: '', yearStart: '', yearEnd: '' },
+        onSave: (updated) => dispatch(updateExperience(updated)),
+    });
 
     return (
         <MasterExperience

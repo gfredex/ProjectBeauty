@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MasterServices } from '@/components';
-import { useSyncState } from '@/hooks/useSyncState';
+import { useEditableList } from '@/hooks/useEditableList';
 
 export type ServiceItem = {
     title: string;
@@ -17,38 +17,20 @@ const defaultServices: ServiceItem[] = [
 ];
 
 const MasterServicesContainer: React.FC = () => {
-    const [originalServices, setOriginalServices] = useState<ServiceItem[]>([]);
-    const [isEditing, setIsEditing] = useState(false);
-
-    const [services, setServices] = useSyncState(defaultServices);
-
-    const handleEdit = () => {
-        setOriginalServices(services);
-        setIsEditing(true);
-    };
-
-    const handleCancel = () => {
-        setServices(originalServices);
-        setIsEditing(false);
-    };
-
-    const handleSave = () => {
-        setIsEditing(false);
-    };
-
-    const handleChange = (index: number, field: keyof ServiceItem, value: string) => {
-        setServices((prev) =>
-            prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
-        );
-    };
-
-    const handleAdd = () => {
-        setServices((prev) => [...prev, { title: '', description: '', price: '' }]);
-    };
-
-    const handleRemove = (index: number) => {
-        setServices((prev) => prev.filter((_, i) => i !== index));
-    };
+    const {
+        items: services,
+        isEditing,
+        handleEdit,
+        handleCancel,
+        handleChange,
+        handleAdd,
+        handleRemove,
+        handleSave,
+    } = useEditableList<ServiceItem>({
+        initialList: defaultServices,
+        emptyItem: { title: '', description: '', price: '' },
+        onSave: () => {},
+    });
 
     return (
         <MasterServices
