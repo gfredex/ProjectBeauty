@@ -1,16 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-const ABOUT_STORAGE_KEY = 'userAbout';
-const EDUCATION_STORAGE_KEY = 'userEducation';
-const EXPERIENCE_STORAGE_KEY = 'userExperience';
-const PROFILE_STORAGE_KEY = 'userProfile';
-const ADDRESS_STORAGE_KEY = 'userAddress';
-
-const defaultAboutText = `Мастер с опытом работы 6 лет! Профессиональная стерилизация инструментов. 
-Для каждого клиента используется индивидуальная пилка. 
-Работы на качественных материалах. Выполняю маникюр, ремонт ногтей, наращивание, педикюр, все виды дизайнов.
-Маникюр с покрытием и любым дизайном 40₽. Наращивание с покрытием и любым дизайном 50₽.
-Педикюр (только пальчики покрытие) 40₽. Педикюр (обработка стоп и пальчики с покрытием) 50₽.`;
+import {
+    ABOUT_STORAGE_KEY,
+    EDUCATION_STORAGE_KEY,
+    EXPERIENCE_STORAGE_KEY,
+    PROFILE_STORAGE_KEY,
+    ADDRESS_STORAGE_KEY
+} from '@/constants/storageKeys.ts';
+import { defaultAboutText } from '@/constants/defaultTexts.ts'
 
 export type EducationItem = {
     title: string;

@@ -24,11 +24,13 @@
 
 .text {
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
-  padding: 0 15% 0 5%;
+  @include sizes(68%);
+  padding-left: 5%;
 }
 
 .experienceYearBlock {
-  @include sizes(161px);
+  @include sizes(120px);
+  margin-left: auto;
 }
 
 .label {

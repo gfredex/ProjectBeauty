@@ -39,6 +39,7 @@ export * from './UI/MasterAdresses';
 export * from './UI/MasterAdressesForm';
 export * from './UI/MasterServices';
 export * from './UI/MasterServicesForm';
+export * from './UI/ImageUploader';
 export * from './containers/Dropdown';
 export * from './containers/CountrySelector';
 export * from './containers/BannerContainer';

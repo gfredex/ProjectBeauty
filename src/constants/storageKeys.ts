@@ -1,0 +1,13 @@
+const ABOUT_STORAGE_KEY = 'userAbout';
+const EDUCATION_STORAGE_KEY = 'userEducation';
+const EXPERIENCE_STORAGE_KEY = 'userExperience';
+const PROFILE_STORAGE_KEY = 'userProfile';
+const ADDRESS_STORAGE_KEY = 'userAddress';
+
+export {
+    ABOUT_STORAGE_KEY,
+    EDUCATION_STORAGE_KEY,
+    EXPERIENCE_STORAGE_KEY,
+    PROFILE_STORAGE_KEY,
+    ADDRESS_STORAGE_KEY
+};

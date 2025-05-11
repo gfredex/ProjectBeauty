@@ -1,0 +1,16 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.wrapper {
+  @include rowing(center, center);
+  @include sizes(140px, 140px);
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: $spacing-16;
+  background-color: $color-white;
+}
+
+.thumbnail {
+  @include sizes(100%, 100%);
+  object-fit: cover;
+}

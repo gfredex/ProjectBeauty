@@ -8,7 +8,12 @@ import {
     Menu,
     MasterSidebar,
     MasterProfileContainer,
-    ScheduleContainer, MasterAboutContainer, MasterEducationContainer, MasterAdressesContainer, MasterServicesContainer,
+    ScheduleContainer,
+    MasterAboutContainer,
+    MasterEducationContainer,
+    MasterAdressesContainer,
+    MasterServicesContainer,
+    ImageUploader,
 } from '@/components';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import styles from './masterArea.module.scss';
@@ -53,6 +58,7 @@ const MasterArea = () => {
                                     <MasterAboutContainer/>
                                     <MasterEducationContainer/>
                                     <MasterExperienceContainer/>
+                                    <ImageUploader/>
                                     <MasterAdressesContainer/>
                                     <MasterServicesContainer/>
                                 </div>

@@ -47,7 +47,7 @@ const MasterEducation: React.FC<MasterEducationProps> = ({
                     onCancel={onCancel}
                 />
             ) : (
-                <ul /*className={styles.educationList}*/>
+                <ul>
                     {education.map((item, index) => (
                         <li key={index} className={styles.educationItem}>
                             <IconSprite name="Check" classNames={{ iconClass: 'check' }} />

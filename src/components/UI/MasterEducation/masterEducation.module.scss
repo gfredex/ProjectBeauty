@@ -26,7 +26,8 @@
 
 .educationText {
   @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
-  padding: 0 14% 0 5%;
+  @include sizes(68%);
+  padding-left: 4%;
 }
 
 .educationItem {
@@ -36,7 +37,8 @@
 
 .educationYearBlock {
   @include rowing(null, null, column);
-  @include sizes(150px);
+  @include sizes(112px);
+  margin-left: auto;
 }
 .educationMonth {
   @include rowing();
