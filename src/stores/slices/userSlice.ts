@@ -43,9 +43,9 @@ const defaultExperience: ExperienceItem[] = [
     },
 ];
 
-const defaultAddressState: AddressState = {
-    address: '',
-    region: '',
+export const defaultAddressState: AddressState = {
+    address: 'Ул. Независимости, 56',
+    region: 'Центральный район',
 };
 
 const getInitialAbout = () => localStorage.getItem(ABOUT_STORAGE_KEY) || defaultAboutText;
@@ -62,7 +62,38 @@ const getInitialExperience = (): ExperienceItem[] => {
 
 const getInitialAddress = (): AddressState => {
     const stored = localStorage.getItem(ADDRESS_STORAGE_KEY);
-    return stored ? JSON.parse(stored) : defaultAddressState;
+    const initialized = localStorage.getItem('userAddressInitialized');
+
+    if (!initialized) {
+        localStorage.setItem('userAddressInitialized', 'true');
+        localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(defaultAddressState));
+        return defaultAddressState;
+    }
+
+    if (!stored || stored === 'undefined' || stored === 'null') {
+        return { address: '', region: '' };
+    }
+
+    try {
+        const parsed = JSON.parse(stored);
+
+        if (
+            typeof parsed === 'object' &&
+            parsed !== null &&
+            'address' in parsed &&
+            'region' in parsed
+        ) {
+            return {
+                address: parsed.address || '',
+                region: parsed.region || ''
+            };
+        }
+
+        return { address: '', region: '' };
+    } catch (error) {
+        console.error('Invalid address JSON in localStorage:', error);
+        return { address: '', region: '' };
+    }
 };
 
 type UserState = {
@@ -126,7 +157,7 @@ const masterSlice = createSlice({
         updateAddress(state, action: PayloadAction<AddressState>) {
             state.addressData = action.payload;
             localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(action.payload));
-        },
+        }
     },
 });
 

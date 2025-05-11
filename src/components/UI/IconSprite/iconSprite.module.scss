@@ -59,3 +59,9 @@
   stroke: $color-purple3;
   color: transparent;
 }
+
+.checkServices {
+  @include sizes($spacing-48, $spacing-30);
+  stroke: $color-purple3;
+  color: transparent;
+}

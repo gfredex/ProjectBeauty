@@ -1,50 +1,66 @@
 import React from 'react';
-import { Button } from '@/components';
+import { Input } from '@/components';
 
-type Props = {
+type AddressItem = {
     address: string;
     region: string;
-    onChange: (field: 'address' | 'region', value: string) => void;
+};
+
+type MasterAdressesFormProps = {
+    addresses: AddressItem[];
+    onChange: (index: number, field: keyof AddressItem, value: string) => void;
+    onAdd: () => void;
+    onRemove: (index: number) => void;
     onSave: () => void;
     onCancel: () => void;
 };
 
-const MasterAdressesForm: React.FC<Props> = ({ address, region, onChange, onSave, onCancel }) => {
+const MasterAdressesForm: React.FC<MasterAdressesFormProps> = ({
+                                                                   addresses,
+                                                                   onChange,
+                                                                   onAdd,
+                                                                   onRemove,
+                                                                   onSave,
+                                                                   onCancel,
+                                                               }) => {
     return (
-        <div style={{ marginTop: '15px' }}>
-            <div style={{ marginBottom: '10px' }}>
-                <label style={{ display: 'block', fontWeight: 500, marginBottom: '4px' }}>Адрес</label>
-                <input
-                    type="text"
-                    value={address}
-                    onChange={(e) => onChange('address', e.target.value)}
-                    style={{
-                        width: '100%',
-                        padding: '8px',
-                        border: '1px solid #ccc',
-                        borderRadius: '6px',
-                        fontSize: '14px',
-                    }}
-                />
-            </div>
-            <div style={{ marginBottom: '15px' }}>
-                <label style={{ display: 'block', fontWeight: 500, marginBottom: '4px' }}>Район</label>
-                <input
-                    type="text"
-                    value={region}
-                    onChange={(e) => onChange('region', e.target.value)}
-                    style={{
-                        width: '100%',
-                        padding: '8px',
-                        border: '1px solid #ccc',
-                        borderRadius: '6px',
-                        fontSize: '14px',
-                    }}
-                />
-            </div>
-            <div style={{ display: 'flex', gap: '10px' }}>
-                <Button onClick={onSave}>Сохранить</Button>
-                <Button onClick={onCancel}>Отмена</Button>
+        <div>
+            {addresses.map((item, index) => (
+                <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <Input
+                            type="text"
+                            name={`address-${index}`}
+                            placeholder="Адрес"
+                            value={item.address}
+                            onChange={(e) => onChange(index, 'address', e.target.value)}
+                        />
+
+                        <Input
+                            type="text"
+                            name={`region-${index}`}
+                            placeholder="Район"
+                            value={item.region}
+                            onChange={(e) => onChange(index, 'region', e.target.value)}
+                        />
+                    </div>
+
+                    <button
+                        onClick={() => onRemove(index)}
+                        aria-label="Удалить"
+                    >
+                        ×
+                    </button>
+                </div>
+            ))}
+
+            <button type="button" onClick={onAdd} style={{ marginTop: '12px' }}>
+                + Добавить адрес
+            </button>
+
+            <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
+                <button onClick={onSave}>Сохранить</button>
+                <button onClick={onCancel}>Отмена</button>
             </div>
         </div>
     );

@@ -1,49 +1,77 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { updateAddress } from '@/stores/slices/userSlice';
-import { MasterAdresses } from '@/components';
+import { MasterAddresses } from '@/components';
+
+type AddressItem = {
+    address: string;
+    region: string;
+};
 
 const MasterAdressesContainer: React.FC = () => {
     const dispatch = useAppDispatch();
-    const { address, region } = useAppSelector((state) => state.master.addressData);
+    const addressData = useAppSelector((state) => state.master.addressData);
 
+    const initialAddresses: AddressItem[] = useMemo(() => {
+        return Array.isArray(addressData) ? addressData : [addressData];
+    }, [addressData]);
+
+    const [addresses, setAddresses] = useState<AddressItem[]>([]);
+    const [originalAddresses, setOriginalAddresses] = useState<AddressItem[]>([]);
     const [isEditing, setIsEditing] = useState(false);
-    const [tempAddress, setTempAddress] = useState(address);
-    const [tempRegion, setTempRegion] = useState(region);
 
     useEffect(() => {
-        setTempAddress(address);
-        setTempRegion(region);
-    }, [address, region]);
+        setAddresses(initialAddresses);
+    }, [initialAddresses]);
 
-    const handleEdit = () => setIsEditing(true);
+    const handleEdit = () => {
+        setOriginalAddresses(addresses);
+        setIsEditing(true);
+    };
 
     const handleCancel = () => {
-        setTempAddress(address);
-        setTempRegion(region);
+        setAddresses(originalAddresses);
         setIsEditing(false);
     };
 
     const handleSave = () => {
-        dispatch(updateAddress({ address: tempAddress, region: tempRegion }));
+        const cleaned = addresses[0];
+        const isEmpty = !cleaned?.address?.trim() && !cleaned?.region?.trim();
+
+        if (isEmpty) {
+            localStorage.removeItem('userAddress');
+            dispatch(updateAddress({ address: '', region: '' }));
+        } else {
+            dispatch(updateAddress(cleaned));
+        }
+
         setIsEditing(false);
     };
 
-    const handleChange = (field: 'address' | 'region', value: string) => {
-        if (field === 'address') {
-            setTempAddress(value);
-        } else {
-            setTempRegion(value);
-        }
+    const handleChange = (index: number, field: keyof AddressItem, value: string) => {
+        setAddresses((prev) =>
+            prev.map((item, i) =>
+                i === index ? { ...item, [field]: value } : item
+            )
+        );
+    };
+
+    const handleAdd = () => {
+        setAddresses((prev) => [...prev, { address: '', region: '' }]);
+    };
+
+    const handleRemove = (index: number) => {
+        setAddresses((prev) => prev.filter((_, i) => i !== index));
     };
 
     return (
-        <MasterAdresses
-            address={tempAddress}
-            region={tempRegion}
+        <MasterAddresses
+            addresses={addresses}
             isEditing={isEditing}
             onEdit={handleEdit}
             onChange={handleChange}
+            onAdd={handleAdd}
+            onRemove={handleRemove}
             onSave={handleSave}
             onCancel={handleCancel}
         />

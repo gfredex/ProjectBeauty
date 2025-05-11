@@ -37,7 +37,7 @@ const MasterProfileCard: React.FC<MasterProfileCardProps> = ({
                 {photoUrl ? (
                     <img src={photoUrl} alt="Фото мастера" className="profile-photo" />
                 ) : (
-                    <SvgIcon Icon={Avatar} />
+                    <SvgIcon Icon={Avatar}/>
                 )}
                 <h2 className={styles.title}>Мой профиль</h2>
                 {!isEditing && (
