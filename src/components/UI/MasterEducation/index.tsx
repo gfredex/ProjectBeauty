@@ -3,7 +3,7 @@ import Edit from '../../../assets/icons/colored/Edit.svg?react';
 import { SvgIcon, Button, IconSprite } from '@/components';
 import { MasterEducationForm } from '@/components';
 import styles from './masterEducation.module.scss';
-import { EducationItem } from '@/stores/slices/userSlice.ts';
+import { EducationItem } from '@/stores/slices/masterSlice.ts';
 
 type MasterEducationProps = {
     education: EducationItem[];

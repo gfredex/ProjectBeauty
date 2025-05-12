@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { updateExperience } from '@/stores/slices/userSlice';
+import { updateExperience } from '@/stores/slices/masterSlice.ts';
 import { MasterExperience } from '@/components';
 import { useEditableList } from '@/hooks/useEditableList';
 

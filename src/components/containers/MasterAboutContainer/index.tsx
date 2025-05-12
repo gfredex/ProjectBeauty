@@ -1,7 +1,7 @@
 import React from 'react';
 import { MasterAbout } from '@/components';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { updateAbout } from '@/stores/slices/userSlice';
+import { updateAbout } from '@/stores/slices/masterSlice.ts';
 import { useEditableValue } from '@/hooks/useEditableValue';
 
 const MasterAboutContainer: React.FC = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { updateEducation } from '@/stores/slices/userSlice';
+import { updateEducation } from '@/stores/slices/masterSlice.ts';
 import { MasterEducation } from '@/components';
-import type { EducationItem } from '@/stores/slices/userSlice';
+import type { EducationItem } from '@/stores/slices/masterSlice.ts';
 import { useEditableList } from '@/hooks/useEditableList';
 
 const MasterEducationContainer: React.FC = () => {

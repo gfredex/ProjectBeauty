@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { updateProfile } from '@/stores/slices/userSlice';
+import { updateProfile } from '@/stores/slices/masterSlice.ts';
 import { MasterProfileCard } from '@/components';
 
 type MasterProfileContainerProps = {

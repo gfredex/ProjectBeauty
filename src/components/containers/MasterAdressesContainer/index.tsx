@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { updateAddress } from '@/stores/slices/userSlice';
+import { updateAddress } from '@/stores/slices/masterSlice.ts';
 import { MasterAddresses } from '@/components';
 import { useEditableList } from '@/hooks/useEditableList';
 
