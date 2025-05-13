@@ -8,7 +8,7 @@ type ClassNames = {
 
 type ButtonProps = {
     children: React.ReactNode;
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     type?: 'button' | 'submit' | 'reset';
     disabled?: boolean;
     classNames?: ClassNames;

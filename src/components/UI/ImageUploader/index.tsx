@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import Upload from '@/assets/icons/colored/Upload.svg?react';
 import Edit from '@/assets/icons/colored/Edit.svg?react';
-import { SvgIcon } from '@/components';
+import { SvgIcon, Button } from '@/components';
 import styles from './imageUploader.module.scss';
 
 const ImageUploader: React.FC = () => {
@@ -43,20 +43,20 @@ const ImageUploader: React.FC = () => {
                     <img src={preview} alt="Preview" className={styles.thumbnail} />
                     {isHovered && (
                         <>
-                            <button
-                                className={styles.iconButton}
+                            <Button
                                 onClick={triggerUpload}
                                 type="button"
+                                classNames={{ buttonClass: 'iconButton' }}
                             >
-                                <SvgIcon Icon={Edit} />
-                            </button>
-                            <button
-                                className={styles.editButton}
+                                <SvgIcon Icon={Edit} className='editUpload'/>
+                            </Button>
+                            <Button
                                 onClick={handleRemoveImage}
                                 type="button"
+                                classNames={{ buttonClass: 'editButtonUploader' }}
                             >
                                 редактировать
-                            </button>
+                            </Button>
                         </>
                     )}
                 </>

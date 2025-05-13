@@ -4,6 +4,7 @@
 .wrapper {
   @include rowing(center, center);
   @include sizes(140px, 140px);
+  position:  relative;
   cursor: pointer;
   overflow: hidden;
   border-radius: $spacing-16;
@@ -16,34 +17,12 @@
 }
 
 .uploadArea {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  @include rowing(center, center);
 }
 
 .tooltip {
   @include fonts($manroupe-font, $font-weight-400, $font-size-12);
   position: absolute;
-  bottom: -$spacing-75;
+  bottom: 12%;
   color: $color-gray4;
-}
-
-.editButton {
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  color: #8a2be2;
 }
