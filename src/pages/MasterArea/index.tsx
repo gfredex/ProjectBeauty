@@ -13,7 +13,7 @@ import {
     MasterEducationContainer,
     MasterAdressesContainer,
     MasterServicesContainer,
-    ImageUploader,
+    Diplomas,
 } from '@/components';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import styles from './masterArea.module.scss';
@@ -58,7 +58,7 @@ const MasterArea = () => {
                                     <MasterAboutContainer/>
                                     <MasterEducationContainer/>
                                     <MasterExperienceContainer/>
-                                    <ImageUploader/>
+                                    <Diplomas/>
                                     <MasterAdressesContainer/>
                                     <MasterServicesContainer/>
                                 </div>
