@@ -14,7 +14,6 @@ interface ServiceData {
 }
 
 const ServiceCard: React.FC = () => {
-    const [editMode, setEditMode] = useState(false);
     const [uploadMode, setUploadMode] = useState(false);
     const [formData, setFormData] = useState<ServiceData>({
         name: 'Комбинированный маникюр',
@@ -47,6 +46,8 @@ const ServiceCard: React.FC = () => {
         setUploadMode(false);
     };
 
+    const hasImage = formData.image !== '';
+
     return (
         <div
             className={styles.wrapServCard}
@@ -54,7 +55,7 @@ const ServiceCard: React.FC = () => {
             onMouseLeave={() => setHovered(false)}
         >
             <div className={styles.imgSection}>
-                {formData.image ? (
+                {hasImage ? (
                     <div className={styles.wrappPicture}>
                         <img
                             className={styles.picture}
@@ -66,8 +67,6 @@ const ServiceCard: React.FC = () => {
                                 <button
                                     className={styles.iconButton}
                                     onClick={() => {
-                                        setEditMode(true);
-                                        setUploadMode(false);
                                         setFormData({
                                             name: '',
                                             coating: '',
@@ -84,7 +83,6 @@ const ServiceCard: React.FC = () => {
                                     className={styles.textButton}
                                     onClick={() => {
                                         setUploadMode(true);
-                                        setEditMode(false);
                                         setTempData(formData);
                                     }}
                                 >
@@ -98,7 +96,6 @@ const ServiceCard: React.FC = () => {
                         className={styles.wrappIcon}
                         onClick={() => {
                             setUploadMode(true);
-                            setEditMode(false);
                             setTempData(formData);
                         }}
                         style={{ cursor: 'pointer' }}
@@ -108,14 +105,14 @@ const ServiceCard: React.FC = () => {
                 )}
             </div>
 
-            {!editMode && !uploadMode && (
+            {!uploadMode && (
                 <div className={styles.infoBlock}>
-                    <h3 className={styles.title}>{formData.name}</h3>
-                    <p className={styles.text}><strong>Покрытие:</strong> {formData.coating}</p>
-                    <p className={styles.text}><strong>Дизайн:</strong> {formData.design}</p>
-                    <p className={styles.text}><strong>Адрес:</strong> {formData.address}</p>
+                    <h3 className={styles.title}>{formData.name || '—'}</h3>
+                    <p className={styles.text}><strong>Покрытие:</strong> {formData.coating || '—'}</p>
+                    <p className={styles.text}><strong>Дизайн:</strong> {formData.design || '—'}</p>
+                    <p className={styles.text}><strong>Адрес:</strong> {formData.address || '—'}</p>
                     <p className={styles.label}>Стоимость</p>
-                    <p className={styles.price}>{formData.price}</p>
+                    <p className={styles.price}>{formData.price || '—'}</p>
                 </div>
             )}
 

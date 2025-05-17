@@ -49,6 +49,7 @@
 }
 
 .imgSection {
+  @include sizes(null, 384px);
   position: relative;
 }
 

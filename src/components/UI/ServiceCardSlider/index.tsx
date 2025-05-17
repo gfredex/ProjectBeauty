@@ -1,18 +1,16 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css/pagination'; // убрали navigation!
+import { Pagination } from 'swiper/modules';
 import { ServiceCard } from '@/components';
 
 const ServiceCardSlider: React.FC = () => {
     return (
         <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Pagination]}
             spaceBetween={20}
-            slidesPerView={1}
-            navigation
+            slidesPerView={3}
             pagination={{ clickable: true }}
             breakpoints={{
                 640: { slidesPerView: 1 },
@@ -23,6 +21,8 @@ const ServiceCardSlider: React.FC = () => {
             {[...Array(6)].map((_, idx) => (
                 <SwiperSlide key={idx}>
                     <ServiceCard />
+                    <ServiceCard />
+                    <ServiceCard />
                 </SwiperSlide>
             ))}
         </Swiper>
@@ -30,3 +30,4 @@ const ServiceCardSlider: React.FC = () => {
 };
 
 export { ServiceCardSlider };
+
