@@ -41,6 +41,8 @@ export * from './UI/MasterServices';
 export * from './UI/MasterServicesForm';
 export * from './UI/ImageUploader';
 export * from './UI/Diplomas';
+export * from './UI/ServiceCard';
+export * from './UI/ServiceCardSlider';
 export * from './containers/Dropdown';
 export * from './containers/CountrySelector';
 export * from './containers/BannerContainer';

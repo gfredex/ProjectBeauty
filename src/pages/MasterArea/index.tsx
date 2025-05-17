@@ -15,6 +15,7 @@ import {
     MasterServicesContainer,
     MasterExperienceContainer,
     Diplomas,
+    ServiceCard, ServiceCardSlider,
 } from '@/components';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import { useAppSelector } from '@/hooks/reduxHooks';
@@ -68,6 +69,8 @@ const MasterArea = () => {
                                     )}
                                     <MasterAdressesContainer />
                                     <MasterServicesContainer />
+                                    <ServiceCard/>
+                                    <ServiceCardSlider/>
                                 </div>
                             </div>
                         </div>

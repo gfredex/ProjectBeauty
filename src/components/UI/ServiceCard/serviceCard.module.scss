@@ -1,0 +1,77 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.wrapServCard {
+  display: inline-block;
+  background-color: $color-white;
+  border-radius: $spacing-24;
+}
+
+.wrappPicture {
+  max-width: 384px;
+  position: relative;
+}
+
+.picture {
+  width: 100%;
+  border-radius: $spacing-24 $spacing-24  $spacing-0 $spacing-0;
+}
+
+.wrappIcon {
+  @include rowing(center, center);
+  @include sizes(384px, 384px);
+}
+
+.infoBlock {
+  padding: $spacing-12 $spacing-24;
+}
+
+.title {
+  padding-bottom: $spacing-8;
+}
+
+.price {
+  padding-bottom: $spacing-46;
+}
+
+.title, .price {
+  @include fonts($manroupe-font, $font-weight-600, $font-size-18, $color-gray4);
+}
+
+.text {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray4);
+  padding-bottom: $spacing-4;
+}
+
+.label {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-15, $color-gray5);
+  padding: $spacing-4 $spacing-0 $spacing-6;
+}
+
+.imgSection {
+  position: relative;
+}
+
+.iconButton {
+  top: 40%;
+  left: 40%;
+  padding: $spacing-8;
+  border: none;
+  border-radius:  $spacing-8;
+  opacity: .7;
+  background-color: $color-white;
+}
+
+.textButton {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-10, $color-gray4);
+  top: 20%;
+  left: 36%;
+  padding: $spacing-8 $spacing-8;
+  border: none;
+  border-radius: $spacing-8;
+  background-color: $color-white;
+}
+
+.iconButton, .textButton {
+  position: absolute;
+}
