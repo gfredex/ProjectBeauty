@@ -12,11 +12,6 @@
   position: relative;
 }
 
-.picture {
-  width: 100%;
-  border-radius: $spacing-24 $spacing-24  $spacing-0 $spacing-0;
-}
-
 .wrappIcon {
   @include rowing(center, center);
   @include sizes(384px, 384px);
@@ -51,28 +46,4 @@
 .imgSection {
   @include sizes(null, 384px);
   position: relative;
-}
-
-.iconButton {
-  top: 40%;
-  left: 40%;
-  padding: $spacing-8;
-  border: none;
-  border-radius:  $spacing-8;
-  opacity: .7;
-  background-color: $color-white;
-}
-
-.textButton {
-  @include fonts($manroupe-font, $font-weight-400, $font-size-10, $color-gray4);
-  top: 20%;
-  left: 36%;
-  padding: $spacing-8 $spacing-8;
-  border: none;
-  border-radius: $spacing-8;
-  background-color: $color-white;
-}
-
-.iconButton, .textButton {
-  position: absolute;
 }

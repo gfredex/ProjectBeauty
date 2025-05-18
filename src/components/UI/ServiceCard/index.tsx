@@ -1,51 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Upload from '@/assets/icons/colored/Upload.svg?react';
 import Edit from '@/assets/icons/colored/Edit.svg?react';
-import { SvgIcon } from '@/components';
+import { SvgIcon, Picture, Button, ServiceCardForm } from '@/components';
 import styles from './serviceCard.module.scss';
 
-interface ServiceData {
+type ServiceData = {
     name: string;
     coating: string;
     design: string;
     address: string;
     price: string;
     image: string;
-}
+};
 
-const ServiceCard: React.FC = () => {
-    const [uploadMode, setUploadMode] = useState(false);
-    const [formData, setFormData] = useState<ServiceData>({
-        name: 'Комбинированный маникюр',
-        coating: 'гель лак',
-        design: 'однотонное, френч',
-        address: 'ул. Жудро, 61',
-        price: '40 руб.',
-        image: '',
-    });
-    const [tempData, setTempData] = useState<ServiceData>(formData);
-    const [hovered, setHovered] = useState(false);
+type Props = {
+    formData: ServiceData;
+    tempData: ServiceData;
+    hovered: boolean;
+    uploadMode: boolean;
+    setHovered: (hovered: boolean) => void;
+    setUploadMode: (upload: boolean) => void;
+    setTempData: (data: ServiceData) => void;
+    onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onSubmit: () => void;
+    onClear: () => void;
+};
 
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setTempData({ ...tempData, image: reader.result as string });
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTempData({ ...tempData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = () => {
-        setFormData(tempData);
-        setUploadMode(false);
-    };
-
+const ServiceCard: React.FC<Props> = ({
+                                          formData,
+                                          tempData,
+                                          hovered,
+                                          uploadMode,
+                                          setHovered,
+                                          setUploadMode,
+                                          setTempData,
+                                          onInputChange,
+                                          onImageUpload,
+                                          onSubmit,
+                                          onClear
+                                      }) => {
     const hasImage = formData.image !== '';
 
     return (
@@ -57,37 +51,21 @@ const ServiceCard: React.FC = () => {
             <div className={styles.imgSection}>
                 {hasImage ? (
                     <div className={styles.wrappPicture}>
-                        <img
-                            className={styles.picture}
-                            src={formData.image}
-                            alt="preview"
-                        />
+                        <Picture src={formData.image} alt='preview' className='picture' />
                         {hovered && (
                             <>
-                                <button
-                                    className={styles.iconButton}
-                                    onClick={() => {
-                                        setFormData({
-                                            name: '',
-                                            coating: '',
-                                            design: '',
-                                            address: '',
-                                            price: '',
-                                            image: '',
-                                        });
-                                    }}
-                                >
-                                    <SvgIcon Icon={Edit} className="editUpload" />
-                                </button>
-                                <button
-                                    className={styles.textButton}
+                                <Button onClick={onClear} classNames={{ buttonClass: 'actionIcon' }}>
+                                    <SvgIcon Icon={Edit} className='editUpload' />
+                                </Button>
+                                <Button
+                                    classNames={{ buttonClass: 'textButton' }}
                                     onClick={() => {
                                         setUploadMode(true);
                                         setTempData(formData);
                                     }}
                                 >
                                     редактировать
-                                </button>
+                                </Button>
                             </>
                         )}
                     </div>
@@ -117,15 +95,13 @@ const ServiceCard: React.FC = () => {
             )}
 
             {uploadMode && (
-                <div>
-                    <input type='file' accept='image/*' onChange={handleImageUpload} />
-                    <input type='text' name='name' placeholder='Наименование' value={tempData.name} onChange={handleInputChange} />
-                    <input type='text' name='coating' placeholder='Покрытие' value={tempData.coating} onChange={handleInputChange} />
-                    <input type='text' name='design' placeholder='Дизайн' value={tempData.design} onChange={handleInputChange} />
-                    <input type='text' name='address' placeholder='Адрес' value={tempData.address} onChange={handleInputChange} />
-                    <input type='text' name='price' placeholder='Цена' value={tempData.price} onChange={handleInputChange} />
-                    <button onClick={handleSubmit}>OK</button>
-                </div>
+                <ServiceCardForm
+                    data={tempData}
+                    onChange={onInputChange}
+                    onImageUpload={onImageUpload}
+                    onSubmit={onSubmit}
+                    onCancel={() => setUploadMode(false)}
+                />
             )}
         </div>
     );

@@ -1,0 +1,11 @@
+.sliderWrap {
+  max-width: 1100px;
+
+  :global(.swiper) {
+    padding-top: 16px;
+  }
+
+  :global(.swiper-slide) {
+    width: auto !important;
+  }
+}

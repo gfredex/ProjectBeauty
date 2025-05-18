@@ -107,3 +107,25 @@
   border-radius: $spacing-8;
   background-color: $color-white;
 }
+
+.actionIcon {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  padding: $spacing-8;
+  border: none;
+  border-radius:  $spacing-8;
+  opacity: .7;
+  background-color: $color-white;
+}
+
+.textButton {
+  @include fonts($manroupe-font, $font-weight-400, $font-size-10, $color-gray4);
+  position: absolute;
+  top: 20%;
+  left: 36%;
+  padding: $spacing-8 $spacing-8;
+  border: none;
+  border-radius: $spacing-8;
+  background-color: $color-white;
+}

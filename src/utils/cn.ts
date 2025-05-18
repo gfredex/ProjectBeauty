@@ -2,7 +2,7 @@ type Styles = { [key: string]: string };
 
 export const cn = (
     styles: Styles,
-    base: string,
+    base: keyof typeof styles,
     custom1?: string,
     custom2?: string
 ): string => {

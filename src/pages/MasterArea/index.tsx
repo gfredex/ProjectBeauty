@@ -15,7 +15,7 @@ import {
     MasterServicesContainer,
     MasterExperienceContainer,
     Diplomas,
-    ServiceCard, ServiceCardSlider,
+    MasterPortfolio, Footer, IconSprite, FooterNav, FooterLegal, CountrySelector,
 } from '@/components';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import { useAppSelector } from '@/hooks/reduxHooks';
@@ -46,7 +46,6 @@ const MasterArea = () => {
                     </div>
                 </div>
             </Header>
-
             <Main>
                 <div className="bg-white">
                     <div className="container">
@@ -67,16 +66,32 @@ const MasterArea = () => {
                                     {experience[1] && (
                                         <MasterExperienceContainer id={experience[1].id} />
                                     )}
-                                    <MasterAdressesContainer />
-                                    <MasterServicesContainer />
-                                    <ServiceCard/>
-                                    <ServiceCardSlider/>
+                                    <MasterAdressesContainer/>
+                                    <MasterServicesContainer/>
+                                    <MasterPortfolio/>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </Main>
+            <Footer>
+                <div className={'bg-light-pink'}>
+                    <div className={'container'}>
+                        <div className={styles.wrappFooter}>
+                            <IconSprite name='LogoFooter' classNames={{iconClass:'logoFooter'}}/>
+                            <p className={styles.wrappFooterNav}>
+                                <FooterNav/>
+                            </p>
+                            <hr className={styles.footerSeparator}/>
+                            <p className={styles.basement}>
+                                <FooterLegal companyName={'LOGO'} years={'2011–2024'}/>
+                                <CountrySelector/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </Footer>
         </>
     );
 };

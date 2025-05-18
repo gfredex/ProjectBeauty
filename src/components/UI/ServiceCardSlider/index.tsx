@@ -1,33 +1,29 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/pagination'; // убрали navigation!
-import { Pagination } from 'swiper/modules';
-import { ServiceCard } from '@/components';
+import { ServiceCardContainer } from '@/components';
+import styles from './serviceCardSlider.module.scss';
 
 const ServiceCardSlider: React.FC = () => {
     return (
-        <Swiper
-            modules={[Pagination]}
-            spaceBetween={20}
-            slidesPerView={3}
-            pagination={{ clickable: true }}
-            breakpoints={{
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-            }}
-        >
-            {[...Array(6)].map((_, idx) => (
-                <SwiperSlide key={idx}>
-                    <ServiceCard />
-                    <ServiceCard />
-                    <ServiceCard />
-                </SwiperSlide>
-            ))}
-        </Swiper>
+        <div className={styles.sliderWrap}>
+            <Swiper
+                spaceBetween={42}
+                slidesPerView={2.7}
+                breakpoints={{
+                    640: { slidesPerView: 1.1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 2.7 },
+                }}
+            >
+                {[...Array(6)].map((_, idx) => (
+                    <SwiperSlide key={idx}>
+                        <ServiceCardContainer />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
     );
 };
 
 export { ServiceCardSlider };
-
