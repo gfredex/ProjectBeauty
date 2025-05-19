@@ -60,11 +60,11 @@ const MasterArea = () => {
                                     <MasterAboutContainer />
                                     <MasterEducationContainer />
                                     {experience[0] && (
-                                        <MasterExperienceContainer id={experience[0].id} />
+                                        <MasterExperienceContainer index={0} />
                                     )}
                                     <Diplomas />
                                     {experience[1] && (
-                                        <MasterExperienceContainer id={experience[1].id} />
+                                        <MasterExperienceContainer index={1} />
                                     )}
                                     <MasterAdressesContainer/>
                                     <MasterServicesContainer/>

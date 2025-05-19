@@ -7,7 +7,6 @@ import {
     ADDRESS_STORAGE_KEY,
 } from '@/constants/storageKeys.ts';
 import { defaultAboutText } from '@/constants/defaultTexts.ts';
-import { v4 as uuidv4 } from 'uuid';
 
 export type EducationItem = {
     title: string;
@@ -15,7 +14,6 @@ export type EducationItem = {
 };
 
 export type ExperienceItem = {
-    id: string;
     title: string;
     yearStart: string;
     yearEnd: string;
@@ -32,7 +30,7 @@ export type UserState = {
     phone: string;
     about: string;
     education: EducationItem[];
-    experience: ExperienceItem[];
+    experience: ExperienceItem[][];
     addressData: AddressState;
 };
 
@@ -44,19 +42,21 @@ const defaultEducation: EducationItem[] = [
     },
 ];
 
-const defaultExperience: ExperienceItem[] = [
-    {
-        id: uuidv4(),
-        title: 'Пэрис нэйл, курс «Комбинированный + аппаратный маникюр. Уровень 1»',
-        yearStart: '2023',
-        yearEnd: '2024',
-    },
-    {
-        id: uuidv4(),
-        title: 'Пэрис нэйл, курс «Комбинированный + аппаратный маникюр. Уровень 1»',
-        yearStart: '2022',
-        yearEnd: '2023',
-    },
+const defaultExperience: ExperienceItem[][] = [
+    [
+        {
+            title: 'Пэрис нэйл, курс «Комбинированный + аппаратный маникюр. Уровень 1»',
+            yearStart: '2023',
+            yearEnd: '2024',
+        },
+    ],
+    [
+        {
+            title: 'Пэрис нэйл, курс «Комбинированный + аппаратный маникюр. Уровень 1»',
+            yearStart: '2022',
+            yearEnd: '2023',
+        },
+    ],
 ];
 
 export const defaultAddressState: AddressState = {
@@ -64,7 +64,7 @@ export const defaultAddressState: AddressState = {
     region: 'Центральный район',
 };
 
-const getInitialAbout = () =>
+const getInitialAbout = (): string =>
     localStorage.getItem(ABOUT_STORAGE_KEY) || defaultAboutText;
 
 const getInitialEducation = (): EducationItem[] => {
@@ -72,7 +72,7 @@ const getInitialEducation = (): EducationItem[] => {
     return stored ? JSON.parse(stored) : defaultEducation;
 };
 
-const getInitialExperience = (): ExperienceItem[] => {
+const getInitialExperience = (): ExperienceItem[][] => {
     const stored = localStorage.getItem(EXPERIENCE_STORAGE_KEY);
 
     if (!stored) {
@@ -83,14 +83,37 @@ const getInitialExperience = (): ExperienceItem[] => {
         return defaultExperience;
     }
 
-    const parsed = JSON.parse(stored);
+    try {
+        const parsed = JSON.parse(stored);
 
-    return parsed.map((item: Partial<ExperienceItem>) => ({
-        id: item.id || uuidv4(),
-        title: item.title || '',
-        yearStart: item.yearStart || '',
-        yearEnd: item.yearEnd || '',
-    }));
+        if (
+            Array.isArray(parsed) &&
+            parsed.every((inner: unknown) =>
+                Array.isArray(inner) &&
+                inner.every(
+                    (item: unknown) =>
+                        typeof item === 'object' &&
+                        item !== null &&
+                        'title' in item &&
+                        'yearStart' in item &&
+                        'yearEnd' in item
+                )
+            )
+        ) {
+            return (parsed as ExperienceItem[][]).map((subArray) =>
+                subArray.map((item) => ({
+                    title: item.title ?? '',
+                    yearStart: item.yearStart ?? '',
+                    yearEnd: item.yearEnd ?? '',
+                }))
+            );
+        }
+
+        return [[], []];
+    } catch (e) {
+        console.error('Failed to parse experience:', e);
+        return [[], []];
+    }
 };
 
 const getInitialAddress = (): AddressState => {
@@ -177,7 +200,7 @@ const masterSlice = createSlice({
                 JSON.stringify(action.payload)
             );
         },
-        updateExperience(state, action: PayloadAction<ExperienceItem[]>) {
+        updateExperience(state, action: PayloadAction<ExperienceItem[][]>) {
             state.experience = action.payload;
             localStorage.setItem(
                 EXPERIENCE_STORAGE_KEY,
