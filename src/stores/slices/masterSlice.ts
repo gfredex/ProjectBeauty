@@ -31,7 +31,7 @@ export type UserState = {
     about: string;
     education: EducationItem[];
     experience: ExperienceItem[][];
-    addressData: AddressState;
+    addressData: AddressState[];
 };
 
 const defaultEducation: EducationItem[] = [
@@ -59,10 +59,12 @@ const defaultExperience: ExperienceItem[][] = [
     ],
 ];
 
-export const defaultAddressState: AddressState = {
-    address: 'Ул. Независимости, 56',
-    region: 'Центральный район',
-};
+export const defaultAddressState: AddressState[] = [
+    {
+        address: 'Ул. Независимости, 56',
+        region: 'Центральный район',
+    },
+];
 
 const getInitialAbout = (): string =>
     localStorage.getItem(ABOUT_STORAGE_KEY) || defaultAboutText;
@@ -116,40 +118,38 @@ const getInitialExperience = (): ExperienceItem[][] => {
     }
 };
 
-const getInitialAddress = (): AddressState => {
+const getInitialAddress = (): AddressState[] => {
     const stored = localStorage.getItem(ADDRESS_STORAGE_KEY);
-    const initialized = localStorage.getItem('userAddressInitialized');
 
-    if (!initialized) {
-        localStorage.setItem('userAddressInitialized', 'true');
-        localStorage.setItem(
-            ADDRESS_STORAGE_KEY,
-            JSON.stringify(defaultAddressState)
-        );
-        return defaultAddressState;
-    }
-
-    if (!stored || stored === 'undefined' || stored === 'null') {
-        return { address: '', region: '' };
+    if (!stored) {
+        const initial = defaultAddressState;
+        localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(initial));
+        return initial;
     }
 
     try {
         const parsed = JSON.parse(stored);
+
         if (
-            typeof parsed === 'object' &&
-            parsed !== null &&
-            'address' in parsed &&
-            'region' in parsed
+            Array.isArray(parsed) &&
+            parsed.every(
+                (item) =>
+                    typeof item === 'object' &&
+                    item !== null &&
+                    'address' in item &&
+                    'region' in item
+            )
         ) {
-            return {
-                address: parsed.address || '',
-                region: parsed.region || '',
-            };
+            return parsed.map((item) => ({
+                address: item.address ?? '',
+                region: item.region ?? '',
+            }));
         }
-        return { address: '', region: '' };
+
+        return [];
     } catch (error) {
         console.error('Invalid address JSON in localStorage:', error);
-        return { address: '', region: '' };
+        return [];
     }
 };
 
@@ -207,12 +207,9 @@ const masterSlice = createSlice({
                 JSON.stringify(action.payload)
             );
         },
-        updateAddress(state, action: PayloadAction<AddressState>) {
+        updateAddress(state, action: PayloadAction<AddressState[]>) {
             state.addressData = action.payload;
-            localStorage.setItem(
-                ADDRESS_STORAGE_KEY,
-                JSON.stringify(action.payload)
-            );
+            localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(action.payload));
         },
     },
 });

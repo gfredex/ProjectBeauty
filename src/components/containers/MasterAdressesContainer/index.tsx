@@ -13,10 +13,6 @@ const MasterAdressesContainer: React.FC = () => {
     const dispatch = useAppDispatch();
     const addressData = useAppSelector((state) => state.master.addressData);
 
-    const initialList: AddressItem[] = Array.isArray(addressData)
-        ? addressData
-        : [addressData];
-
     const {
         items: addresses,
         isEditing,
@@ -27,18 +23,10 @@ const MasterAdressesContainer: React.FC = () => {
         handleRemove,
         handleSave,
     } = useEditableList<AddressItem>({
-        initialList,
+        initialList: addressData ?? [],
         emptyItem: { address: '', region: '' },
         onSave: (updated) => {
-            const first = updated[0];
-            const isEmpty = !first?.address?.trim() && !first?.region?.trim();
-
-            if (isEmpty) {
-                localStorage.removeItem('userAddress');
-                dispatch(updateAddress({ address: '', region: '' }));
-            } else {
-                dispatch(updateAddress(first));
-            }
+            dispatch(updateAddress(updated));
         },
     });
 

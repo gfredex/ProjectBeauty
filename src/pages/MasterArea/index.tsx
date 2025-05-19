@@ -22,8 +22,7 @@ import { useAppSelector } from '@/hooks/reduxHooks';
 import styles from './masterArea.module.scss';
 
 const MasterArea = () => {
-    const experience = useAppSelector((state) => state.master.experience);
-
+    useAppSelector((state) => state.master.experience);
     return (
         <>
             <Header>
@@ -59,13 +58,9 @@ const MasterArea = () => {
                                 <div className={styles.wrappAboutCard}>
                                     <MasterAboutContainer />
                                     <MasterEducationContainer />
-                                    {experience[0] && (
-                                        <MasterExperienceContainer index={0} />
-                                    )}
+                                    <MasterExperienceContainer index={0}/>
                                     <Diplomas />
-                                    {experience[1] && (
-                                        <MasterExperienceContainer index={1} />
-                                    )}
+                                    <MasterExperienceContainer index={1}/>
                                     <MasterAdressesContainer/>
                                     <MasterServicesContainer/>
                                     <MasterPortfolio/>

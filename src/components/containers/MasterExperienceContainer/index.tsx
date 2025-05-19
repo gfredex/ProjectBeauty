@@ -6,7 +6,7 @@ import { useEditableList } from '@/hooks/useEditableList';
 import type { ExperienceItem } from '@/stores/slices/masterSlice';
 
 type Props = {
-    index: number;
+    index?: number;
 };
 
 const MasterExperienceContainer: React.FC<Props> = ({ index }) => {
@@ -33,8 +33,6 @@ const MasterExperienceContainer: React.FC<Props> = ({ index }) => {
             dispatch(updateExperience(updatedExperience));
         },
     });
-
-    if (!list.length && !isEditing) return null;
 
     return (
         <MasterExperience
