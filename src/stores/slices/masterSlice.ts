@@ -5,6 +5,7 @@ import {
     EXPERIENCE_STORAGE_KEY,
     PROFILE_STORAGE_KEY,
     ADDRESS_STORAGE_KEY,
+    SERVICES_STORAGE_KEY,
 } from '@/constants/storageKeys.ts';
 import { defaultAboutText } from '@/constants/defaultTexts.ts';
 
@@ -24,6 +25,12 @@ export type AddressState = {
     region: string;
 };
 
+export type ServiceItem = {
+    title: string;
+    description: string;
+    price: string;
+};
+
 export type UserState = {
     name: string;
     email: string;
@@ -32,6 +39,7 @@ export type UserState = {
     education: EducationItem[];
     experience: ExperienceItem[][];
     addressData: AddressState[];
+    services: ServiceItem[];
 };
 
 const defaultEducation: EducationItem[] = [
@@ -153,6 +161,47 @@ const getInitialAddress = (): AddressState[] => {
     }
 };
 
+const getInitialServices = (): ServiceItem[] => {
+    const stored = localStorage.getItem(SERVICES_STORAGE_KEY);
+    if (!stored) {
+        localStorage.setItem(SERVICES_STORAGE_KEY, JSON.stringify(defaultServices));
+        return defaultServices;
+    }
+
+    try {
+        const parsed = JSON.parse(stored);
+        if (
+            Array.isArray(parsed) &&
+            parsed.every(
+                (item) =>
+                    typeof item === 'object' &&
+                    item !== null &&
+                    'title' in item &&
+                    'description' in item &&
+                    'price' in item
+            )
+        ) {
+            return parsed.map((item) => ({
+                title: item.title ?? '',
+                description: item.description ?? '',
+                price: item.price ?? '',
+            }));
+        }
+        return [];
+    } catch (error) {
+        console.error('Invalid services JSON in localStorage:', error);
+        return [];
+    }
+};
+
+const defaultServices: ServiceItem[] = [
+    {
+        title: 'Дизайн',
+        description: 'описание услуги',
+        price: '100',
+    },
+];
+
 const savedUser = localStorage.getItem(PROFILE_STORAGE_KEY);
 const parsedUser = savedUser ? JSON.parse(savedUser) : {};
 
@@ -164,6 +213,7 @@ const initialState: UserState = {
     education: getInitialEducation(),
     experience: getInitialExperience(),
     addressData: getInitialAddress(),
+    services: getInitialServices(),
 };
 
 const masterSlice = createSlice({
@@ -211,6 +261,10 @@ const masterSlice = createSlice({
             state.addressData = action.payload;
             localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(action.payload));
         },
+        updateServices(state, action: PayloadAction<ServiceItem[]>) {
+            state.services = action.payload;
+            localStorage.setItem(SERVICES_STORAGE_KEY, JSON.stringify(action.payload));
+        },
     },
 });
 
@@ -220,6 +274,7 @@ export const {
     updateEducation,
     updateExperience,
     updateAddress,
+    updateServices,
 } = masterSlice.actions;
 
 export default masterSlice.reducer;

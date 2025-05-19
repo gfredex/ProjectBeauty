@@ -1,6 +1,7 @@
 import React from 'react';
 import Edit from '../../../assets/icons/colored/Edit.svg?react';
-import { SvgIcon, Button, IconSprite, ServiceItem, MasterServicesForm } from '@/components';
+import { SvgIcon, Button, IconSprite, MasterServicesForm } from '@/components';
+import type { ServiceItem } from '@/stores/slices/masterSlice';
 import styles from './masterServices.module.scss';
 
 type Props = {

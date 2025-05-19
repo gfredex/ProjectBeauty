@@ -1,22 +1,14 @@
 import React from 'react';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { updateServices } from '@/stores/slices/masterSlice';
 import { MasterServices } from '@/components';
 import { useEditableList } from '@/hooks/useEditableList';
-
-export type ServiceItem = {
-    title: string;
-    description: string;
-    price: string;
-};
-
-const defaultServices: ServiceItem[] = [
-    {
-        title: 'Дизайн',
-        description: 'описание услуги',
-        price: '100',
-    },
-];
+import type { ServiceItem } from '@/stores/slices/masterSlice';
 
 const MasterServicesContainer: React.FC = () => {
+    const dispatch = useAppDispatch();
+    const storedServices = useAppSelector((state) => state.master.services);
+
     const {
         items: services,
         isEditing,
@@ -27,9 +19,11 @@ const MasterServicesContainer: React.FC = () => {
         handleRemove,
         handleSave,
     } = useEditableList<ServiceItem>({
-        initialList: defaultServices,
+        initialList: storedServices,
         emptyItem: { title: '', description: '', price: '' },
-        onSave: () => {},
+        onSave: (updated) => {
+            dispatch(updateServices(updated));
+        },
     });
 
     return (
