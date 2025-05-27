@@ -24,19 +24,6 @@
     padding: 110px 0 15px;
 }
 
-.wrappCards {
-    @include rowing();
-    flex-wrap: wrap;
-    gap: $spacing-25;
-    padding: $spacing-40 $spacing-57;
-    border-radius: $spacing-24;
-    background-color: $color-pink;
-}
-
-.mastersMoreWrap {
-    @include rowing(center);
-}
-
 .wrappFooter {
     margin: $spacing-0 $spacing-100;
     padding-bottom: $spacing-50;

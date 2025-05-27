@@ -11,3 +11,17 @@ export const getReviewWord = (count: number): string => {
 
     return 'отзывов';
 };
+
+export const getMasterWord = (count: number): string => {
+    const lastDigit = count % 10;
+    const lastTwoDigits = count % 100;
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+        return 'мастеров';
+    }
+
+    if (lastDigit === 1) return 'мастера';
+    if (lastDigit >= 2 && lastDigit <= 4) return 'мастера';
+
+    return 'мастеров';
+};

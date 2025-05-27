@@ -45,6 +45,7 @@ export * from './UI/ServiceCardForm';
 export * from './UI/ServiceCard';
 export * from './UI/ServiceCardSlider';
 export * from './UI/MasterPortfolio';
+export * from './UI/MasterList';
 export * from './containers/Dropdown';
 export * from './containers/CountrySelector';
 export * from './containers/BannerContainer';

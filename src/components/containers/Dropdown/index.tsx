@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { DropdownUI } from '@/components';
 import { useDropdown } from '@/hooks/useDropdown.ts';
 
@@ -12,6 +12,7 @@ type ClassNames = {
 type DropdownContainerProps = {
     items: string[];
     buttonLabel: string;
+    selectedLabel?: string | null;
     onItemClick?: (label: string) => void;
     classNames?: ClassNames;
     iconName?: string;
@@ -21,6 +22,7 @@ type DropdownContainerProps = {
 const Dropdown: React.FC<DropdownContainerProps> = ({
                                                         items,
                                                         buttonLabel,
+                                                        selectedLabel,
                                                         onItemClick,
                                                         iconName,
                                                         iconClassName,
@@ -28,9 +30,20 @@ const Dropdown: React.FC<DropdownContainerProps> = ({
                                                     }) => {
     const { open, toggle, ref } = useDropdown<HTMLDivElement>();
 
-    const handleItemClick = (label: string) => {
-        onItemClick?.(label);
-        toggle(); // или close() если нужно
+    const [label, setLabel] = useState(buttonLabel);
+
+    useEffect(() => {
+        if (selectedLabel) {
+            setLabel(selectedLabel);
+        } else {
+            setLabel(buttonLabel);
+        }
+    }, [selectedLabel, buttonLabel]);
+
+    const handleItemClick = (itemLabel: string) => {
+        setLabel(itemLabel);
+        onItemClick?.(itemLabel);
+        toggle();
     };
 
     return (
@@ -38,7 +51,7 @@ const Dropdown: React.FC<DropdownContainerProps> = ({
             open={open}
             menuRef={ref}
             items={items}
-            buttonLabel={buttonLabel}
+            buttonLabel={label}
             onItemClick={handleItemClick}
             toggleDropdown={toggle}
             classNames={classNames}

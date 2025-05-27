@@ -1,10 +1,10 @@
-import { MasterArea } from './pages';
+import { Home } from './pages';
 import './app.scss';
 
 function App() {
     return (
         <>
-            <MasterArea />
+            <Home/>
         </>
     );
 }

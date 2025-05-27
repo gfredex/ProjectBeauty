@@ -7,8 +7,7 @@ import {
     Menu,
     SearchPanel,
     MastersToolbar,
-    MasterCard,
-    Button,
+    MasterList,
     Slider,
     JoinSection,
     HelpSection,
@@ -63,55 +62,7 @@ function Home() {
                         </p>
                     </div>
                     <div className={'container'}>
-                        <p className={styles.wrappCards}>
-                            <MasterCard
-                                name={'Маргарита Чернышова'}
-                                specialty={'мастер маникюра '}
-                                address={'г. Минск, ул. Центральная, 54'}
-                                rating={5.0}
-                                reviewsCount={4}
-                            />
-                            <MasterCard
-                                name={'Маргарита Чернышова'}
-                                specialty={'мастер маникюра '}
-                                address={'г. Минск, ул. Центральная, 54'}
-                                rating={5.0}
-                                reviewsCount={4}
-                            />
-                            <MasterCard
-                                name={'Маргарита Чернышова'}
-                                specialty={'мастер маникюра '}
-                                address={'г. Минск, ул. Центральная, 54'}
-                                rating={5.0}
-                                reviewsCount={4}
-                            />
-                            <MasterCard
-                                name={'Маргарита Чернышова'}
-                                specialty={'мастер маникюра '}
-                                address={'г. Минск, ул. Центральная, 54'}
-                                rating={5.0}
-                                reviewsCount={4}
-                            />
-                            <MasterCard
-                                name={'Маргарита Чернышова'}
-                                specialty={'мастер маникюра '}
-                                address={'г. Минск, ул. Центральная, 54'}
-                                rating={5.0}
-                                reviewsCount={4}
-                            />
-                            <MasterCard
-                                name={'Маргарита Чернышова'}
-                                specialty={'мастер маникюра '}
-                                address={'г. Минск, ул. Центральная, 54'}
-                                rating={5.0}
-                                reviewsCount={4}
-                            />
-                        </p>
-                        <p className={styles.mastersMoreWrap}>
-                            <Button classNames={{buttonClass: 'mastersMoreBtn'}}>
-                                Показать еще мастеров по вашим параметрам
-                            </Button>
-                        </p>
+                        <MasterList/>
                     </div>
                 </div>
                 <div className={'bg-light-pink'}>

@@ -129,3 +129,28 @@
   border-radius: $spacing-8;
   background-color: $color-white;
 }
+
+.activePageBtn {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-white2);
+  background-color: $color-purple3;
+}
+
+.pageBtn {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-purple3);
+  background-color: $color-white;
+}
+
+.activePageBtn, .pageBtn {
+  @include rowing(center, center);
+  @include sizes($spacing-30,  $spacing-30);
+  padding:  $spacing-0;
+  border-radius: 50%;
+  border: $spacing-1 $color-purple3 solid;
+}
+
+.showMoreMasters {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-white2);
+  margin-bottom:  $spacing-24;
+  padding:  $spacing-20 $spacing-30;
+  background-color: $color-purple3;
+}
