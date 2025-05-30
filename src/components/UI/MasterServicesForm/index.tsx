@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ServiceItem } from '@/components';
+import type { ServiceItem } from '@/stores/slices/masterSlice';
 
 type Props = {
     services: ServiceItem[];
