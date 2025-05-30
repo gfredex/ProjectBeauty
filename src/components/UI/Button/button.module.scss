@@ -154,3 +154,16 @@
   padding:  $spacing-20 $spacing-30;
   background-color: $color-purple3;
 }
+
+.filterTag {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-16, $color-white);
+  padding:  $spacing-12 $spacing-20;
+  margin: $spacing-25 $spacing-50 $spacing-0 $spacing-0;
+  background-color: $color-purple3;
+}
+
+.clearFiltersBtn {
+  @include fonts($manroupe-font, $font-weight-500, $font-size-20, $color-gray2);
+  padding:  $spacing-0;
+  background-color: transparent;
+}

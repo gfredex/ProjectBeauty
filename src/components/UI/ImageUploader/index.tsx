@@ -41,7 +41,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                             type="button"
                             classNames={{ buttonClass: 'iconButton' }}
                         >
-                            <SvgIcon Icon={Edit} className="editUpload" />
+                            <SvgIcon Icon={Edit} className='editUpload' />
                         </Button>
                         <Button
                             onClick={onRemoveImage}

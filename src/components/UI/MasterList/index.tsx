@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/stores/store.ts';
 import { Button, MasterCard } from '@/components';
 import { getMasterWord } from '@/utils/getWordForm.ts';
+import { firstNames, lastNames, streets, specialties } from '@/data/masters.ts'
 import styles from './masterList.module.scss';
 
 type Master = {
@@ -14,17 +15,13 @@ type Master = {
     reviewsCount: number;
 };
 
-const firstNames = ['Маргарита', 'Анастасия', 'Екатерина', 'Светлана', 'Ольга', 'Наталья', 'Вероника', 'Дарья'];
-const lastNames = ['Чернышова', 'Иванова', 'Петрова', 'Сидорова', 'Кузнецова', 'Морозова', 'Смирнова', 'Попова'];
-const streets = ['Центральная', 'Парковая', 'Лесная', 'Победы', 'Гагарина', 'Советская', 'Молодёжная', 'Набережная'];
-
 const getRandom = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
 const getRandomFloat = (min: number, max: number) => (Math.random() * (max - min) + min).toFixed(1);
 
 const mockMasters: Master[] = Array.from({ length: 48 }, (_, index) => ({
     id: index + 1,
     name: `${getRandom(firstNames)} ${getRandom(lastNames)}`,
-    specialty: 'мастер маникюра',
+    specialty: getRandom(specialties),
     address: `г. Минск, ул. ${getRandom(streets)}, ${50 + index}`,
     rating: parseFloat(getRandomFloat(4.2, 5.0)),
     reviewsCount: Math.floor(Math.random() * 20 + 1),
@@ -34,18 +31,24 @@ const INITIAL_VISIBLE_COUNT = 6;
 const ITEMS_PER_PAGE = 12;
 
 const MasterList: React.FC = () => {
-    const { district, searchTriggered } = useSelector((state: RootState) => state.filters);
+    const { district, specialty, searchTriggered } = useSelector((state: RootState) => state.filters);
 
     const [hasClickedShowMore, setHasClickedShowMore] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    
+
     let filteredMasters: Master[] = mockMasters;
 
-    if (searchTriggered && district) {
-        const matching = mockMasters.filter((master) => master.address.includes(district));
-        const nonMatching = mockMasters.filter((master) => !master.address.includes(district));
-        filteredMasters = [...matching, ...nonMatching];
+    if (searchTriggered) {
+        const matches = mockMasters.filter((master) => {
+            const matchesDistrict = district ? master.address.includes(district) : true;
+            const matchesSpecialty = specialty ? master.specialty === specialty : true;
+            return matchesDistrict && matchesSpecialty;
+        });
+
+        const others = mockMasters.filter((master) => !matches.includes(master));
+        filteredMasters = [...matches, ...others];
     }
+
 
     const totalPages = Math.ceil(filteredMasters.length / ITEMS_PER_PAGE);
 

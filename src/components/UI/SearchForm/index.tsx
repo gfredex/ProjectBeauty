@@ -1,38 +1,38 @@
 import React from 'react';
-import { useDispatch, useSelector  } from 'react-redux';
-import { Dropdown, IconSprite, Button } from '@/components';
-import { setDistrict, setSearchTriggered } from '@/stores/slices/filtersSlice.ts';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dropdown, IconSprite, Button, SvgIcon } from '@/components';
+import { setDistrict, setSpecialty, setSearchTriggered } from '@/stores/slices/filtersSlice.ts';
 import { RootState } from '@/stores/store.ts';
+import { streets, specialties } from '@/data/masters.ts';
+import tagClose from '../../../assets/icons/colored/tagClose.svg?react';
 import styles from './searchForm.module.scss';
 
-const SearchForm: React.FC  = () => {
+const SearchForm: React.FC = () => {
     const dispatch = useDispatch();
-    const district = useSelector((state: RootState) => state.filters.district);
+    const { district, specialty } = useSelector((state: RootState) => state.filters);
 
-    const handleRemoveDistrict = () => {
-        dispatch(setDistrict(null));
-    };
+    const handleRemoveDistrict = () => dispatch(setDistrict(null));
+    const handleRemoveSpecialty = () => dispatch(setSpecialty(null));
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
         dispatch(setSearchTriggered(true));
     };
 
+    const handleClearAllFilters = () => {
+        dispatch(setDistrict(null));
+        dispatch(setSpecialty(null));
+        dispatch(setSearchTriggered(false));
+    };
+
+    const showClearButton = district !== null || specialty !== null;
+
     return (
-        <form>
+        <form onSubmit={handleSearch}>
             <p className={styles.searchForm}>
                 <Dropdown
                     buttonLabel='Выбрать район'
-                    items={[
-                        'Центральная',
-                        'Парковая',
-                        'Лесная',
-                        'Победы',
-                        'Гагарина',
-                        'Советская',
-                        'Молодёжная',
-                        'Набережная'
-                    ]}
+                    items={streets}
                     selectedLabel={district}
                     onItemClick={(label) => dispatch(setDistrict(label))}
                     classNames={{
@@ -44,14 +44,17 @@ const SearchForm: React.FC  = () => {
                 />
                 <Dropdown
                     buttonLabel='Выбрать Услуги'
-                    items={['Пункт 1', 'Пункт 2', 'Пункт 3']}
+                    items={specialties}
+                    selectedLabel={specialty}
+                    onItemClick={(label) => dispatch(setSpecialty(label))}
                     classNames={{
                         wrapper: 'searchWrap',
                         button: 'searchPanelBtn',
                     }}
-                    iconName={'GrayArrowDown'}
-                    iconClassName={'searchFormIcon'}
+                    iconName='GrayArrowDown'
+                    iconClassName='searchFormIcon'
                 />
+                {/* Остальные дропдауны */}
                 <Dropdown
                     buttonLabel='Какйо-то фильтр'
                     items={['Пункт 1', 'Пункт 2', 'Пункт 3']}
@@ -59,8 +62,8 @@ const SearchForm: React.FC  = () => {
                         wrapper: 'searchWrap',
                         button: 'searchPanelBtn',
                     }}
-                    iconName={'GrayArrowDown'}
-                    iconClassName={'searchFormIcon'}
+                    iconName='GrayArrowDown'
+                    iconClassName='searchFormIcon'
                 />
                 <Dropdown
                     buttonLabel='Выбрать Дату'
@@ -69,8 +72,8 @@ const SearchForm: React.FC  = () => {
                         wrapper: 'searchWrap',
                         button: 'searchPanelBtn',
                     }}
-                    iconName={'GrayArrowDown'}
-                    iconClassName={'searchFormIcon'}
+                    iconName='GrayArrowDown'
+                    iconClassName='searchFormIcon'
                 />
                 <Dropdown
                     buttonLabel='Цена'
@@ -79,26 +82,46 @@ const SearchForm: React.FC  = () => {
                         wrapper: 'lastItemWrap',
                         button: 'searchPanelBtn',
                     }}
-                    iconName={'GrayArrowDown'}
-                    iconClassName={'searchFormIcon'}
+                    iconName='GrayArrowDown'
+                    iconClassName='searchFormIcon'
                 />
-                <Button classNames={{buttonClass:'searchBtn'}} onClick={handleSearch}>
+                <Button classNames={{ buttonClass: 'searchBtn' }} type="submit">
                     <span>найти</span>
-                    <IconSprite name='Magnifier' classNames={{iconClass:'magnifier'}}/>
+                    <IconSprite name='Magnifier' classNames={{ iconClass: 'magnifier' }} />
                 </Button>
             </p>
 
-            {district && (
-                <p className={styles.selectedFilters}>
-                    <button
-                        type="button"
-                        className={styles.filterTag}
+            <p className={styles.selectedFilters}>
+                {district && (
+                    <Button
+                        type='button'
+                        classNames={{ buttonClass: 'filterTag' }}
                         onClick={handleRemoveDistrict}
                     >
-                        {district} <span className={styles.removeIcon}>×</span>
-                    </button>
-                </p>
-            )}
+                        {district}
+                        <SvgIcon Icon={tagClose} className='tagClose' />
+                    </Button>
+                )}
+                {specialty && (
+                    <Button
+                        type='button'
+                        classNames={{ buttonClass: 'filterTag' }}
+                        onClick={handleRemoveSpecialty}
+                    >
+                        {specialty}
+                        <SvgIcon Icon={tagClose} className='tagClose' />
+                    </Button>
+                )}
+                {showClearButton && (
+                    <Button
+                        type='button'
+                        classNames={{ buttonClass: 'clearFiltersBtn' }}
+                        onClick={handleClearAllFilters}
+                    >
+                        Очистить фильтр
+                    </Button>
+                )}
+            </p>
         </form>
     );
 };
