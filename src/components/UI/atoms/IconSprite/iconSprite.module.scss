@@ -1,0 +1,67 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.dropDownMenu {
+    @include sizes($spacing-16, $spacing-16);
+    stroke: $color-purple;
+    color: transparent;
+}
+
+.searchFormIcon {
+    @include sizes($spacing-16, $spacing-16);
+    stroke: $color-gray2;
+    color: transparent;
+}
+
+.magnifier {
+    @include sizes($spacing-16, $spacing-16);
+}
+
+.toolbarIcon {
+    @include sizes($spacing-16, $spacing-16);
+}
+
+.heartOutIcon {
+    @include sizes($spacing-30, $spacing-31);
+    color: $color-black3;
+}
+
+.starOutIcon {
+    @include sizes($spacing-20, $spacing-19);
+    color: $color-orange;
+}
+
+.messageIcon {
+    @include sizes($spacing-20, $spacing-20);
+    color: $color-purple3;
+}
+
+.logoFooter {
+    @include sizes($spacing-100, $spacing-50);
+    margin: $spacing-36 $spacing-0;
+    color: $color-purple3;
+}
+
+.ageIcon {
+    @include sizes($spacing-35, $spacing-35);
+    color: $color-purple3;
+}
+
+.selectCountry {
+    @include sizes($spacing-16, $spacing-16);
+    stroke: $color-purple3;
+    color: transparent;
+}
+
+.check {
+    @include sizes($spacing-48, $spacing-30);
+    margin-left: $spacing-5;
+    stroke: $color-purple3;
+    color: transparent;
+}
+
+.checkServices {
+    @include sizes($spacing-48, $spacing-30);
+    stroke: $color-purple3;
+    color: transparent;
+}

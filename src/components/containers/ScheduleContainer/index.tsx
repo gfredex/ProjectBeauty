@@ -17,9 +17,7 @@ const ScheduleContainer: React.FC = () => {
     const schedule = mockSchedule[selectedDate.format('YYYY-MM-DD')] || [];
 
     const handleWeekChange = (direction: 'prev' | 'next') => {
-        setSelectedDate(prev =>
-            prev.clone().add(direction === 'next' ? 7 : -7, 'days')
-        );
+        setSelectedDate((prev) => prev.clone().add(direction === 'next' ? 7 : -7, 'days'));
     };
 
     return (

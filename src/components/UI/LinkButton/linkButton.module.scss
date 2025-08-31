@@ -1,9 +1,0 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
-
-.linkButton {
-    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-white);
-    padding: $spacing-15 $spacing-30;
-    border-radius: $spacing-8;
-    background-color: $color-purple3;
-}

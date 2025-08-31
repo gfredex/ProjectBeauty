@@ -1,0 +1,54 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+@font-face {
+    font-family: 'Manrope-Semibold';
+    src: url('../../../../assets/fonts/Manrope-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.educationCard {
+    margin-bottom: $spacing-24;
+    padding: $spacing-16 $spacing-24 $spacing-0;
+    border-radius: $spacing-12;
+    background-color: $color-white;
+}
+
+.header {
+    @include rowing(null, center);
+    padding-bottom: $spacing-20;
+}
+
+.title {
+    @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
+}
+
+.educationText {
+    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
+    @include sizes(68%);
+    padding-left: 4%;
+}
+
+.educationItem {
+    @include rowing();
+    padding-bottom: $spacing-16;
+}
+
+.educationYearBlock {
+    @include rowing(null, null, column);
+    @include sizes(112px);
+    margin-left: auto;
+}
+.educationMonth {
+    @include rowing();
+}
+
+.label {
+    @include fonts($manroupe-font, $font-weight-400, $font-size-17, $color-gray5);
+}
+
+.year {
+    @include fonts(Manrope-Semibold, $font-weight-600, $font-size-17, $color-gray4);
+    padding-top: $spacing-10;
+}

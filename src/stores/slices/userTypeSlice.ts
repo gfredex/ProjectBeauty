@@ -4,7 +4,7 @@ export type UserType = 'master' | 'client';
 
 type UserTypeState = {
     userType: UserType;
-}
+};
 
 const initialState: UserTypeState = {
     userType: (localStorage.getItem('userType') as UserType) || 'master',

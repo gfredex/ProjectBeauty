@@ -2,52 +2,51 @@
 @use '../../styles/mixins' as *;
 
 .headerWrapp {
-  @include rowing(space-between, center);
-  min-height: $spacing-70;
+    @include rowing(space-between, center);
+    min-height: $spacing-70;
 }
 
 .navbarMenu {
-  @include rowing();
+    @include rowing();
 }
 .mainPanel {
-  @include rowing(space-between);
-  padding: $spacing-16 $spacing-24;
+    @include rowing(space-between);
+    padding: $spacing-16 $spacing-24;
 }
 
 .masterProfileSection {
-  @include rowing();
-  gap: $spacing-20;
-  padding-top:  $spacing-26;
+    @include rowing();
+    gap: $spacing-20;
+    padding-top: $spacing-26;
 }
 
 .wrappMainPanel {
-  flex-grow: 1;
-  padding: $spacing-14 $spacing-0 $spacing-0;
-  margin-bottom: $spacing-14;
-  background-color: $color-pink;
+    flex-grow: 1;
+    margin: $spacing-14 $spacing-0;
+    background-color: $color-pink;
 }
 
 .wrappAboutCard {
-  margin:  $spacing-0 $spacing-24;
-  border-radius:  $spacing-12;
-  background-color: $color-pink;
+    margin: $spacing-0 $spacing-24;
+    border-radius: $spacing-12;
+    background-color: $color-pink;
 }
 
 .wrappFooter {
-  margin: $spacing-0 $spacing-100;
-  padding-bottom: $spacing-50;
+    margin: $spacing-0 $spacing-100;
+    padding-bottom: $spacing-50;
 }
 
 .wrappFooterNav {
-  padding-bottom: $spacing-60;
+    padding-bottom: $spacing-60;
 }
 
 .footerSeparator {
-  @include sizes(null, $spacing-2);
-  border: none;
-  background-color: $color-purple3;
+    @include sizes(null, $spacing-2);
+    border: none;
+    background-color: $color-purple3;
 }
 
 .basement {
-  @include rowing(space-between);
+    @include rowing(space-between);
 }

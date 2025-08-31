@@ -4,7 +4,7 @@ export const useDropdown = <T extends HTMLElement = HTMLDivElement>() => {
     const [open, setOpen] = useState(false);
     const ref = useRef<T>(null);
 
-    const toggle = () => setOpen(prev => !prev);
+    const toggle = () => setOpen((prev) => !prev);
     const close = () => setOpen(false);
 
     useEffect(() => {

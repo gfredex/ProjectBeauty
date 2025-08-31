@@ -1,0 +1,44 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.addressCard {
+    margin-bottom: $spacing-24;
+    padding: $spacing-16 $spacing-24 $spacing-0;
+    border-radius: $spacing-12;
+    background-color: $color-white;
+}
+
+.header {
+    @include rowing(null, center);
+    padding-bottom: $spacing-20;
+}
+
+.title {
+    @include fonts($manroupe-font, $font-weight-600, $font-size-20, $color-gray4);
+}
+
+.addressItem {
+    padding-left: $spacing-16;
+}
+
+.addressRow {
+    @include rowing(null, center);
+    padding-bottom: $spacing-16;
+}
+
+.addressLabel,
+.regionLabel {
+    padding-bottom: $spacing-16;
+}
+
+.addressText,
+.regionText {
+    padding-left: $spacing-55;
+}
+
+.addressLabel,
+.addressText,
+.regionLabel,
+.regionText {
+    @include fonts($manroupe-font, $font-weight-400, $font-size-16, $color-gray4, $spacing-24);
+}

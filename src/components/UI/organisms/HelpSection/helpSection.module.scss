@@ -1,0 +1,17 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.wrappHelpSection {
+    @include rowing(center, center, column);
+    padding: $spacing-50 $spacing-0;
+}
+
+.titleHelp {
+    @include fonts($roboto-font, $font-weight-600, $font-size-40, $color-white);
+}
+
+.subtitleHelp {
+    @include fonts($roboto-font, $font-weight-400, $font-size-22, $color-white);
+    padding: $spacing-16 $spacing-0;
+    letter-spacing: 0.8px;
+}

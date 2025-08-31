@@ -11,7 +11,7 @@ const specialties = [
     'косметолог',
     'парикмахер',
     'бровист',
-    'мастер шугаринга'
+    'мастер шугаринга',
 ];
 
 export { firstNames, lastNames, streets, specialties };

@@ -44,8 +44,7 @@ export type UserState = {
 
 const defaultEducation: EducationItem[] = [
     {
-        title:
-            'Пэрис нэйл, курс «Комбинированный + аппаратный маникюр + наращивание на верхние формы + топ дизайн. Уровень 1»',
+        title: 'Пэрис нэйл, курс «Комбинированный + аппаратный маникюр + наращивание на верхние формы + топ дизайн. Уровень 1»',
         year: '2024',
     },
 ];
@@ -74,8 +73,7 @@ export const defaultAddressState: AddressState[] = [
     },
 ];
 
-const getInitialAbout = (): string =>
-    localStorage.getItem(ABOUT_STORAGE_KEY) || defaultAboutText;
+const getInitialAbout = (): string => localStorage.getItem(ABOUT_STORAGE_KEY) || defaultAboutText;
 
 const getInitialEducation = (): EducationItem[] => {
     const stored = localStorage.getItem(EDUCATION_STORAGE_KEY);
@@ -86,10 +84,7 @@ const getInitialExperience = (): ExperienceItem[][] => {
     const stored = localStorage.getItem(EXPERIENCE_STORAGE_KEY);
 
     if (!stored) {
-        localStorage.setItem(
-            EXPERIENCE_STORAGE_KEY,
-            JSON.stringify(defaultExperience)
-        );
+        localStorage.setItem(EXPERIENCE_STORAGE_KEY, JSON.stringify(defaultExperience));
         return defaultExperience;
     }
 
@@ -98,16 +93,17 @@ const getInitialExperience = (): ExperienceItem[][] => {
 
         if (
             Array.isArray(parsed) &&
-            parsed.every((inner: unknown) =>
-                Array.isArray(inner) &&
-                inner.every(
-                    (item: unknown) =>
-                        typeof item === 'object' &&
-                        item !== null &&
-                        'title' in item &&
-                        'yearStart' in item &&
-                        'yearEnd' in item
-                )
+            parsed.every(
+                (inner: unknown) =>
+                    Array.isArray(inner) &&
+                    inner.every(
+                        (item: unknown) =>
+                            typeof item === 'object' &&
+                            item !== null &&
+                            'title' in item &&
+                            'yearStart' in item &&
+                            'yearEnd' in item
+                    )
             )
         ) {
             return (parsed as ExperienceItem[][]).map((subArray) =>
@@ -140,13 +136,7 @@ const getInitialAddress = (): AddressState[] => {
 
         if (
             Array.isArray(parsed) &&
-            parsed.every(
-                (item) =>
-                    typeof item === 'object' &&
-                    item !== null &&
-                    'address' in item &&
-                    'region' in item
-            )
+            parsed.every((item) => typeof item === 'object' && item !== null && 'address' in item && 'region' in item)
         ) {
             return parsed.map((item) => ({
                 address: item.address ?? '',
@@ -222,9 +212,7 @@ const masterSlice = createSlice({
     reducers: {
         updateProfile(
             state,
-            action: PayloadAction<
-                Omit<UserState, 'about' | 'education' | 'experience' | 'addressData'>
-            >
+            action: PayloadAction<Omit<UserState, 'about' | 'education' | 'experience' | 'addressData'>>
         ) {
             const newState = { ...state, ...action.payload };
             localStorage.setItem(
@@ -245,17 +233,11 @@ const masterSlice = createSlice({
         },
         updateEducation(state, action: PayloadAction<EducationItem[]>) {
             state.education = action.payload;
-            localStorage.setItem(
-                EDUCATION_STORAGE_KEY,
-                JSON.stringify(action.payload)
-            );
+            localStorage.setItem(EDUCATION_STORAGE_KEY, JSON.stringify(action.payload));
         },
         updateExperience(state, action: PayloadAction<ExperienceItem[][]>) {
             state.experience = action.payload;
-            localStorage.setItem(
-                EXPERIENCE_STORAGE_KEY,
-                JSON.stringify(action.payload)
-            );
+            localStorage.setItem(EXPERIENCE_STORAGE_KEY, JSON.stringify(action.payload));
         },
         updateAddress(state, action: PayloadAction<AddressState[]>) {
             state.addressData = action.payload;
@@ -268,13 +250,7 @@ const masterSlice = createSlice({
     },
 });
 
-export const {
-    updateProfile,
-    updateAbout,
-    updateEducation,
-    updateExperience,
-    updateAddress,
-    updateServices,
-} = masterSlice.actions;
+export const { updateProfile, updateAbout, updateEducation, updateExperience, updateAddress, updateServices } =
+    masterSlice.actions;
 
 export default masterSlice.reducer;

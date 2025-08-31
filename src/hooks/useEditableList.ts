@@ -6,11 +6,7 @@ type UseEditableListParams<T> = {
     onSave?: (items: T[]) => void;
 };
 
-export function useEditableList<T>({
-                                       initialList,
-                                       emptyItem,
-                                       onSave,
-                                   }: UseEditableListParams<T>) {
+export function useEditableList<T>({ initialList, emptyItem, onSave }: UseEditableListParams<T>) {
     const [items, setItems] = useState<T[]>(initialList);
     const [originalItems, setOriginalItems] = useState<T[]>(initialList);
     const [isEditing, setIsEditing] = useState(false);
@@ -26,9 +22,7 @@ export function useEditableList<T>({
     };
 
     const handleChange = (index: number, field: keyof T, value: string) => {
-        setItems((prev) =>
-            prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
-        );
+        setItems((prev) => prev.map((item, i) => (i === index ? { ...item, [field]: value } : item)));
     };
 
     const handleAdd = () => {

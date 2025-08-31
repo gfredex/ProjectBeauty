@@ -29,7 +29,7 @@ function Home() {
                 <div className={'bg-light-pink'}>
                     <div className={'container'}>
                         <div className={styles.headerWrapp}>
-                            <Logo  icon={logoIcon}/>
+                            <Logo icon={logoIcon} />
                             <p className={styles.navbarMenu}>
                                 <Dropdown
                                     buttonLabel="Меню"
@@ -49,7 +49,7 @@ function Home() {
             <Main>
                 <div className={styles.hero}>
                     <div className={'container _h-100'}>
-                        <BannerContainer/>
+                        <BannerContainer />
                     </div>
                 </div>
                 <div className={'bg-white'}>
@@ -58,26 +58,26 @@ function Home() {
                             title={'Найди своего мастера  ногтевого сервиса  максимально быстро, и удобно.'}
                         ></SearchPanel>
                         <p className={styles.wrappToolbar}>
-                            <MastersToolbar/>
+                            <MastersToolbar />
                         </p>
                     </div>
                     <div className={'container'}>
-                        <MasterList/>
+                        <MasterList />
                     </div>
                 </div>
                 <div className={'bg-light-pink'}>
                     <div className={'container'}>
-                        <Slider/>
+                        <Slider />
                     </div>
                 </div>
                 <div className={'bg-white'}>
                     <div className={'container'}>
-                        <JoinSection/>
+                        <JoinSection />
                     </div>
                 </div>
                 <div className={'bg-purple'}>
                     <div className={'container'}>
-                        <HelpSection/>
+                        <HelpSection />
                     </div>
                 </div>
             </Main>
@@ -85,14 +85,14 @@ function Home() {
                 <div className={'bg-light-pink'}>
                     <div className={'container'}>
                         <div className={styles.wrappFooter}>
-                            <IconSprite name='LogoFooter' classNames={{iconClass:'logoFooter'}}/>
+                            <IconSprite name="LogoFooter" classNames={{ iconClass: 'logoFooter' }} />
                             <p className={styles.wrappFooterNav}>
-                                <FooterNav/>
+                                <FooterNav />
                             </p>
-                            <hr className={styles.footerSeparator}/>
+                            <hr className={styles.footerSeparator} />
                             <p className={styles.basement}>
-                                <FooterLegal companyName={'LOGO'} years={'2011–2024'}/>
-                                <CountrySelector/>
+                                <FooterLegal companyName={'LOGO'} years={'2011–2024'} />
+                                <CountrySelector />
                             </p>
                         </div>
                     </div>

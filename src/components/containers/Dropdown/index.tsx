@@ -20,14 +20,14 @@ type DropdownContainerProps = {
 };
 
 const Dropdown: React.FC<DropdownContainerProps> = ({
-                                                        items,
-                                                        buttonLabel,
-                                                        selectedLabel,
-                                                        onItemClick,
-                                                        iconName,
-                                                        iconClassName,
-                                                        classNames = {},
-                                                    }) => {
+    items,
+    buttonLabel,
+    selectedLabel,
+    onItemClick,
+    iconName,
+    iconClassName,
+    classNames = {},
+}) => {
     const { open, toggle, ref } = useDropdown<HTMLDivElement>();
 
     const [label, setLabel] = useState(buttonLabel);

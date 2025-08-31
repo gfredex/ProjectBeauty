@@ -15,7 +15,12 @@ import {
     MasterServicesContainer,
     MasterExperienceContainer,
     Diplomas,
-    MasterPortfolio, Footer, IconSprite, FooterNav, FooterLegal, CountrySelector,
+    MasterPortfolio,
+    Footer,
+    IconSprite,
+    FooterNav,
+    FooterLegal,
+    CountrySelector,
 } from '@/components';
 import logoIcon from '../../assets/icons/colored/Logo.svg?react';
 import { useAppSelector } from '@/hooks/reduxHooks';
@@ -58,12 +63,12 @@ const MasterArea = () => {
                                 <div className={styles.wrappAboutCard}>
                                     <MasterAboutContainer />
                                     <MasterEducationContainer />
-                                    <MasterExperienceContainer index={0}/>
+                                    <MasterExperienceContainer index={0} />
                                     <Diplomas />
-                                    <MasterExperienceContainer index={1}/>
-                                    <MasterAdressesContainer/>
-                                    <MasterServicesContainer/>
-                                    <MasterPortfolio/>
+                                    <MasterExperienceContainer index={1} />
+                                    <MasterAdressesContainer />
+                                    <MasterServicesContainer />
+                                    <MasterPortfolio />
                                 </div>
                             </div>
                         </div>
@@ -74,14 +79,14 @@ const MasterArea = () => {
                 <div className={'bg-light-pink'}>
                     <div className={'container'}>
                         <div className={styles.wrappFooter}>
-                            <IconSprite name='LogoFooter' classNames={{iconClass:'logoFooter'}}/>
+                            <IconSprite name="LogoFooter" classNames={{ iconClass: 'logoFooter' }} />
                             <p className={styles.wrappFooterNav}>
-                                <FooterNav/>
+                                <FooterNav />
                             </p>
-                            <hr className={styles.footerSeparator}/>
+                            <hr className={styles.footerSeparator} />
                             <p className={styles.basement}>
-                                <FooterLegal companyName={'LOGO'} years={'2011–2024'}/>
-                                <CountrySelector/>
+                                <FooterLegal companyName={'LOGO'} years={'2011–2024'} />
+                                <CountrySelector />
                             </p>
                         </div>
                     </div>

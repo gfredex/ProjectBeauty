@@ -1,9 +1,0 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
-
-.searchForm {
-  @include rowing(space-between, center);
-  padding: $spacing-10 $spacing-0 $spacing-10;
-  border-radius: $spacing-16;
-  background-color: $color-white;
-}
